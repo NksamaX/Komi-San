@@ -9,7 +9,7 @@ from nksama.plugins.helpers import call_back_in_filter
 @bot.on_callback_query(call_back_in_filter('quotek'))
 def callback_quotek(_,query):
     if query.data.split(":")[1] == "change":
-        query.message.delete()
+#         query.message.delete()
         kk = requests.get('https://animechan.vercel.app/api/random').json()
         anime = kk['anime']
         quote = kk['quote']
@@ -18,7 +18,7 @@ def callback_quotek(_,query):
 **Anime:** `{anime}`
 **Character:** `{character}`
 **Quote:** `{quote}`"""
-        bot.send_message(query.message.chat.id , caption=caption , reply_markup=InlineKeyboardMarkup([
+        query.message.edit(caption , reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Change" , callback_data="quotek:change")],
         ]))
 
