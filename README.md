@@ -31,6 +31,6 @@ __Vars__ :
 ```
 API_ID - my.telegram.org
 API_HASH -  my.telegram.org
-TOKEN - @botfather
+BOT_TOKEN - @botfather
 
 ```
