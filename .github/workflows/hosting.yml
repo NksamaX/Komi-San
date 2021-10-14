@@ -1,1 +1,43 @@
+name : komi
 
+
+on:
+    schedule:
+      - cron: "0 */6 * * *"
+    push:
+      branches: [ main ]
+      
+env:
+  API_ID: ${{secrets.API_ID}}
+  API_HASH: ${{secrets.API_HASH}}
+  TOKEN: ${{secrets.TOKEN}}
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - uses: actions/checkout@v2
+       - uses: styfle/cancel-workflow-action@0.9.0
+         name: "Cancel duplicate workflow runs"
+         with:
+            all_but_latest: true
+            access_token: ${{ secrets.token }}
+       - name: Set up Python 3.9
+         uses: actions/setup-python@v2.2.2
+         with:
+           python-version: 3.9
+
+       - name: cloning repo and install
+         continue-on-error: true
+         run: |
+           git clone https://github.com/NksamaX/Komi-San komi && cd komi && pip3 install -r requirements.txt
+           pwd
+       - name: Running
+         timeout-minutes: 350
+         continue-on-error: true
+         run: |
+           curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
+           pwd
+           cd komi
+           python3 -m nksama
