@@ -26,9 +26,11 @@ help_message.append({"Module_Name": "hi" , "Help": "/hi - says hi"})
 
 #How to deploy ?
 
-vars :
+__Vars__ :
 
 ```
 API_ID - my.telegram.org
 API_HASH -  my.telegram.org
 TOKEN - @botfather
+
+```
