@@ -3,3 +3,4 @@ tgcrypto
 requests
 bs4
 pymongo
+dnspython
