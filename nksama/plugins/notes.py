@@ -3,25 +3,28 @@ from nksama import bot
 from pyrogram import filters
 import json
 from nksama import help_message
+from nksama.plugins.admin import is_admin
 
 @bot.on_message(filters.command('addnote'))
 def addnote(_,message):
-    note = message.text.split(' ')[1]
-    text = message.text.replace(message.text.split(" ")[0] , "").replace(message.text.split(' ')[1] , "")
-    db.insert_one(
-        {
-            "type": "note",
-            "chat_id": message.chat.id,
-            "note_name": note,
-            "text": text
-        }
-    )
+    if is_admin(message.chat.id , message.from_user.id):
+        note = message.text.split(' ')[1]
+        text = message.text.replace(message.text.split(" ")[0] , "").replace(message.text.split(' ')[1] , "")
+        db.insert_one(
+            {
+                "type": "note",
+                "chat_id": message.chat.id,
+                "note_name": note,
+                "text": text
+            }
+        )
 
-    message.reply_text('Added!')
+        message.reply_text('Added!')
 
 
 @bot.on_message(filters.command('getnote'))
 def get_note(_,message):
+    
     try:
         note = message.text.split(' ')[1]
         data = db.find_one({"chat_id": message.chat.id , "type": "note" , "note_name": note})
@@ -61,10 +64,11 @@ def notes(_,message):
 
 @bot.on_message(filters.command('delnote'))
 def delnote(_,message):
-    note = message.text.split(" ")[1]
-    db.delete_one({"note_name": note})
-    message.reply('Deleted!')
-    
+    if is_admin(message.chat.id , message.from_user.id):
+        note = message.text.split(" ")[1]
+        db.delete_one({"note_name": note})
+        message.reply('Deleted!')
+
     
     
 
