@@ -7,19 +7,11 @@ from typing import List , Any
 
 
 
-
-def sublists(input_list: List[Any], width: int = 3) -> List[List[Any]]:
-    return [input_list[x : x + width] for x in range(0, len(input_list), width)]
-
-
 @bot.on_message(filters.command('help'))
 def bothelp(_,message):
     keyboard = []
     for x in help_message:
-        # keyboard = [(
-        #     [InlineKeyboardButton(x['Module_Name'], callback_data=f"help:{x['Module_Name']}")],
-        # )]
-        sublists(keyboard.append([InlineKeyboardButton(f"{x['Module_Name']}" , callback_data=f"help:{x['Module_Name']}")]))
+        keyboard.append([InlineKeyboardButton(f"{x['Module_Name']}" , callback_data=f"help:{x['Module_Name']}")])
         
 
     bot.send_message(message.chat.id , "Commands and help" , reply_markup=InlineKeyboardMarkup(keyboard))
