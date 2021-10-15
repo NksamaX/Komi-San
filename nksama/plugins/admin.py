@@ -37,7 +37,7 @@ def admeme_callback(_,query):
     else:
         message.reply('You are not admin!')
 
-@bot.on_message(filters.command('ban') & filters.command(f'ban@Dynasty_MangerBot'))
+@bot.on_message(filters.command('ban'))
 def ban(_,message):
     # scammer = reply.from_user.id
     reply = message.reply_to_message
@@ -52,7 +52,7 @@ def ban(_,message):
         message.reply('You are not admin')
 
 
-@bot.on_message(filters.command('unban') & filters.command(f'unban@Dynasty_MangerBot'))
+@bot.on_message(filters.command('unban'))
 def unban(_,message):
     try:
         user = message.text.split(" ")[1]
@@ -76,7 +76,7 @@ def pin(_,message):
         message.reply('Reply to a message')
 
 
-@bot.on_message(filters.command('unpin') & filters.command(f'unpin@Dynasty_MangerBot'))
+@bot.on_message(filters.command('unpin'))
 def pin(_,message):
     if message.reply_to_message:
         message_id = message.reply_to_message.message_id
