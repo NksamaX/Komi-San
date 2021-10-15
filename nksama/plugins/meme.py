@@ -32,7 +32,7 @@ def rmeme(_,message):
 
 help_message.append(
     {
-        "Module_Name": "Meme",
+        "Module_Name": "meme",
         "Help": "/rmeme - to get random memes from reddit"
     }
 )
