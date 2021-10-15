@@ -1,6 +1,6 @@
 import pymongo
 from nksama.db import MONGO_URL as db_url
-from nksama import bot
+from nksama import bot , help_message
 from pyrogram import filters
 
 welcome_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
@@ -46,3 +46,6 @@ def welcome(_,message):
       
   except Exception as e:
     bot.send_message(-1001646296281 , f"error in welcome:\n]n{e}")
+    
+    
+help_message.append({"Module_Name": "welcome"})
