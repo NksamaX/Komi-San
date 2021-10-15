@@ -97,7 +97,7 @@ def promote(_,message):
 
      
 help_message.append({
-    "Module_Name": "Admin" ,
+    "Module_Name": "admin" ,
     "Help": """
 /ban - reply to a user
 /unban user id or username
