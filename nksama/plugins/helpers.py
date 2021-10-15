@@ -41,7 +41,7 @@ def callback_help(_,query):
             for x in help_message:
                 module = query.data.split(':')[1]
                 module_name = f'{module}_help'
-                query.message.edit(fk.helpp.get(module_name , reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Back" , callback_data="help:back")]])))
+                query.message.edit(fk.helpp.get(module_name) , reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Back" , callback_data="help:back")]]))
            
             msg = query.message
             callback_module_name = query.data.split(':')[1]
