@@ -1,6 +1,7 @@
 import pymongo
 from nksama.db import MONGO_URL as db_url
 from nksama import bot
+from pyrogram import filters
 
 welcome_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
 
