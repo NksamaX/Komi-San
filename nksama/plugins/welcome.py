@@ -27,7 +27,7 @@ def clearwelcome(_,message):
 @bot.on_message(filters.new_chat_members)
 def welcome(_,message):
   try:
-    welcome_msg = db.find_one({"chat_id" : message.chat.id})['welcome_text'] or ""
+    welcome_msg = welcome_db.find_one({"chat_id" : message.chat.id})['welcome_text'] or ""
     if not welcome_msg == "":
       message.reply_text(welcome_msg)
 
