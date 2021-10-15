@@ -3,6 +3,7 @@ import sys
 import traceback
 from nksama import bot as app
 from pyrogram import filters
+from pyrogram.errors import RPCError
 import speedtest
 
 
@@ -78,3 +79,17 @@ def speedtest_(_,message):
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image)
+
+@app.on_message(filters.command("leave") & filters.user(owner))
+async def leave(client, message):
+    if len(message.command) == 1:
+        try:
+            await client.leave_chat(message.chat.id)
+        except RPCError as e:
+            print(e)
+    else:
+        cmd = message.text.split(maxsplit=1)[1]
+        try:
+            await client.leave_chat(int(cmd))
+        except RPCError as e:
+            print(e)
