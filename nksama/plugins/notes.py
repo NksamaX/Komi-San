@@ -48,17 +48,9 @@ def gettnote(_,message):
 def notes(_,message):
     notes = None
 
-    # if notes:
-    #     for x in db.find({"chat_id": message.chat.id}):
-    #         notes = f"{notes}\n{x}"
-    #         message.reply(notes)
-    # else:
-    #     for x in db.find({"chat_id": message.chat.id}):
-    #         notes = x
-
     for x in db.find({"chat_id": message.chat.id}):
         if notes:
-            notes = f"{notes}\n{x['note_name']}"
+            notes = f"• __{notes}__\n• __{x['note_name']}__"
         
         else:
             notes = x['note_name']
