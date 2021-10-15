@@ -70,7 +70,7 @@ async def aexec(code, client, message):
 
 
 @app.on_message(filters.command("speedtest") & filters.user(owner))
-    def speedtest_(_,message):
+def speedtest_(_,message):
     speed = speedtest.Speedtest()
     speed.get_best_server()
     speed.download()
