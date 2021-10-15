@@ -26,9 +26,23 @@ def get_note(_,message):
         note = message.text.split(' ')[1]
         data = db.find_one({"chat_id": message.chat.id , "type": "note" , "note_name": note})
         message.reply(data['text'])
+        
+        
     except Exception as e:
         message.reply(e)
-
+        
+   
+@bot.on_message(filters.regex(r"^#.+"))
+def gettnote(_,message):
+    try:
+        note_name = message.text.replace("#" , "")
+        data = db.find_one({"chat_id": message.chat.id , "type": "note" , "note_name": note_name})
+        message.reply(data['text'])
+    
+    except Exception as e:
+        message.reply(e)
+        
+    
 
 @bot.on_message(filters.command('notes'))
 def notes(_,message):
@@ -58,6 +72,8 @@ def delnote(_,message):
     note = message.text.split(" ")[1]
     db.delete_one({"note_name": note})
     message.reply('Deleted!')
+    
+    
     
 
 
