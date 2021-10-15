@@ -34,7 +34,7 @@ def quote(_,message):
 **Anime:** `{anime}`
 **Character:** `{character}`
 **Quote:** `{quote}`"""
-    bot.send_message(message.chat.id , caption=caption , reply_markup=InlineKeyboardMarkup([
+    bot.send_message(message.chat.id , caption , reply_markup=InlineKeyboardMarkup([
         [InlineKeyboardButton("Change" , callback_data="quotek:change")]
     ]))
 
