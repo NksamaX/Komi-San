@@ -92,7 +92,7 @@ def pin(_,message):
 @bot.on_message(filters.command('promote')) 
 def promote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.chat.promote_member(message.from_user.id)
+       message.chat.promote_member(message.reply_to_message.from_user.id)
        message.reply('Promoted @{} !'.format(message.from_user.username))
 
      
