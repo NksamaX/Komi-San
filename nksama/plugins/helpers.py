@@ -41,7 +41,7 @@ def callback_help(_,query):
             for x in help_message:
                 module = query.data.split(':')[1]
                 module_name = f'{module}_help'
-                query.message.edit(fk.module_name)
+                query.message.edit(fk.f'{module_name}')
            
             msg = query.message
             callback_module_name = query.data.split(':')[1]
