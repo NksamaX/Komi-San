@@ -58,9 +58,9 @@ def callback_help(_,query):
 
         query.message.edit("Commands and Help" , reply_markup=InlineKeyboardMarkup(keyboard))
         
-   if query.data.split(":")[1] == "back":
-     keyboard = []
-     for x in help_message:
+    if query.data.split(":")[1] == "back":
+        keyboard = []
+        for x in help_message:
         keyboard.append([InlineKeyboardButton(x['Module_Name'], callback_data=f"help:{x['Module_Name']}")])
         query.message.edit("commands and help" , reply_markup=InlineKeyboardMarkup(keyboard))
             
