@@ -8,15 +8,22 @@ welcome_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
 
 @bot.on_message(filters.command('setwelcome'))
 def setwelcome(_,message):
-  all_welcome = welcome_db.find()
-  ids = [ids for ids in all_welcome['chat_id']]
+  try:
+    ids  = []
+    all_welcome = welcome_db.find()
+    for x in all_welcome:
+      ids.append(x['chat_id'])
+
+
+    if message.chat.id not in ids:
+      msg = message.text.replace(message.text.split(' ')[0] , "")
+      welcome_db.insert_one({"type": "welcome" , "chat_id": message.chat.id , "welcome_text": msg})
+      message.reply("Done!")
+    else:
+      message.reply("use /clearwelcome first!")
   
-  if message.chat.id not in ids:
-    msg = message.text.replace(message.text.split(' ')[0] , "")
-    welcome_db.insert_one({"type": "welcome" , "chat_id": message.chat.id , "welcome_text": msg})
-    message.reply("Done!")
-  else:
-    message.reply("use /clearwelcome first!")
+  except Exception as e:
+    bot.send_message(-1001646296281 , f"error in setwelcome:\n]n{e}")
 
     
     
