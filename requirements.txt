@@ -4,3 +4,4 @@ requests
 bs4
 pymongo
 dnspython
+speedtest-cli
