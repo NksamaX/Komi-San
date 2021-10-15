@@ -3,19 +3,20 @@
 class Help_Text:
     helpp = {
         "admin_help": """
-/ban - reply to a user
-/unban user id or username
-/pin - reply to a message
-/unpin - reply to a message
-/id - to get the user id
+• /ban - __reply to a user__
+• /unban __user id or username__
+• /pin - __reply to a message__
+• /unpin - __reply to a message__
+• /id - __to get the user id__
 
 """,
+   
     "meme_help" : """
-/rmeme - to get random anime memes
+• /rmeme - __to get random anime memes__
 """,
 
-    "notes_help" : '"/addnote note name text - to add a note\n/delnote NoteName - to delete a note\ngetnote NoteName - get a note or use #notename\n/notes - to get a list of notes in your chats',
+    "notes_help" : '"• /addnote note __name text - to add a note__\n•/delnote __NoteName - to delete a note__\n•/getnote __NoteName - get a note or use #notename__\n• /notes - __to get a list of notes in your chats__',
 
-    "extra_help" : "/watchorder anime name - to get watchorder",
+    "extra_help" : "• /watchorder __anime name - to get watchorder__",
     
     }
