@@ -50,7 +50,7 @@ def notes(_,message):
 
     for x in db.find({"chat_id": message.chat.id}):
         if notes:
-            notes = f"• __{notes}__\n• __{x['note_name']}__"
+            notes = f"__{notes}__\n• __{x['note_name']}__"
         
         else:
             notes = x['note_name']
