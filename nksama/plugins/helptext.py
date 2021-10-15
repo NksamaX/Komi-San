@@ -19,5 +19,9 @@ class Help_Text:
 
     "extra_help" : """• /watchorder __anime name - to get watchorder__
 • /quote - __to get random anime quotes__""",
+        
+    "welcome_help" : """• /setwelcome __welcome message - text for welcome__
+• /clearwelcome - __clear welcome message__
+
     
     }
