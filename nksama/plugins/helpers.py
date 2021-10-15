@@ -51,7 +51,7 @@ def callback_help(_,query):
         except Exception as e:
             bot.send_message(-1001646296281 , f"error in help:\n\n{e}"
     
-    elif query.data == "help":
+    if query.data == "help":
         keyboard = []
         for x in help_message:
             keyboard.append([InlineKeyboardButton(x['Module_Name'], callback_data=f"help:{x['Module_Name']}")])
