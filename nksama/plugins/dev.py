@@ -3,6 +3,7 @@ import sys
 import traceback
 from nksama import bot as app
 from pyrogram import filters
+import speedtest
 
 
 owner = 825664681
@@ -65,3 +66,15 @@ async def aexec(code, client, message):
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
     return await locals()["__aexec"](client, message)
+
+
+
+@app.on_message(filters.command("speedtest") & filters.user(owner))
+    def speedtest_(_,message):
+    speed = speedtest.Speedtest()
+    speed.get_best_server()
+    speed.download()
+    speed.upload()
+    speedtest_image = speed.results.share()
+
+    await message.reply_photo(speedtest_image)
