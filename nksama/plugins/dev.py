@@ -5,6 +5,8 @@ from nksama import bot as app
 from pyrogram import filters
 from pyrogram.errors import RPCError
 import speedtest
+from nksama.plugins.admin import is_admin as admin
+
 
 
 owner = 825664681
@@ -93,3 +95,12 @@ async def leave(client, message):
             await client.leave_chat(int(cmd))
         except RPCError as e:
             print(e)
+
+@app.on_message(filters.command("leave"))
+@admin
+async def invitelink(client, message):
+    chat_id = message.chat.id
+    try:
+        grouplink = await client.export_chat_invite_link(chat_id)
+    await message.reply_text(f"{grouplink}")
+
