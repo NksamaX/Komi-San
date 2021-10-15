@@ -2,6 +2,7 @@ from requests import get
 from pyrogram import filters , Client
 from pyrogram.types import *
 from bs4 import BeautifulSoup
+from nksama import help_message
 from nksama import bot
 
 
@@ -41,3 +42,4 @@ def watchorder(_,message):
     bot.send_message(message.chat.id , "results for {}".format(anime_) , reply_markup=InlineKeyboardMarkup(keyboard))
 
 
+help_message.append({"Module_Name": "extra"})
