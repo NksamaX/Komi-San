@@ -3,12 +3,12 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup 
 from nksama import bot ,help_message
-from typing import List
+from typing import List , Any
 
 
 
 
-def sublists(input_list: List[], width: int = 3) -> List[List[]]:
+def sublists(input_list: List[Any], width: int = 3) -> List[List[Any]]:
     return [input_list[x : x + width] for x in range(0, len(input_list), width)]
 
 
