@@ -21,7 +21,7 @@ class Help_Text:
 • /quote - __to get random anime quotes__""",
         
     "welcome_help" : """• /setwelcome __welcome message - text for welcome__
-• /clearwelcome - __clear welcome message__
+• /clearwelcome - __clear welcome message__""",
 
     
     }
