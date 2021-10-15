@@ -63,7 +63,7 @@ def unban(_,message):
         message.reply(e)
 
     
-@bot.on_message(filters.command('pin') & filters.command(f'pin@Dynasty_MangerBot'))
+@bot.on_message(filters.command('pin'))
 def pin(_,message):
     if message.reply_to_message:
         message_id = message.reply_to_message.message_id
