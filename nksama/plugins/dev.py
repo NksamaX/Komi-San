@@ -77,4 +77,4 @@ def speedtest_(_,message):
     speed.upload()
     speedtest_image = speed.results.share()
 
-    await message.reply_photo(speedtest_image)
+    message.reply_photo(speedtest_image)
