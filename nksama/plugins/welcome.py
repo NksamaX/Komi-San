@@ -23,7 +23,7 @@ def clearwelcome(_,message):
   
  
 
-@bot.on_message(filters.new_chat_members):
+@bot.on_message(filters.new_chat_members)
 def welcome(_,message):
   try:
     welcome_msg = db.find_one({"chat_id" : message.chat.id})['welcome_text'] or ""
