@@ -9,7 +9,9 @@ welcome_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
 @bot.on_message(filters.command('setwelcome'))
 def setwelcome(_,message):
   all_welcome = welcome_db.find()
-  if message.chat.id not in all_welcome:
+  ids = [ids for ids in all_welcome['chat_id']]
+  
+  if message.chat.id not in ids:
     msg = message.text.replace(message.text.split(' ')[0] , "")
     welcome_db.insert_one({"type": "welcome" , "chat_id": message.chat.id , "welcome_text": msg})
     message.reply("Done!")
@@ -20,7 +22,8 @@ def setwelcome(_,message):
     
 @bot.on_message(filters.command("clearwelcome"))
 def clearwelcome(_,message):
-  welcome_db.delete_one({"chat_id": message.chat.id})
+  welcome_db.delete_many({"chat_id": message.chat.id})
+  message.reply("Ok!")
   
  
 
