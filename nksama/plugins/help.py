@@ -8,7 +8,7 @@ from typing import List
 
 
 
-def sublists(input_list: List[Any], width: int = 3) -> List[List[Any]]:
+def sublists(input_list: List[], width: int = 3) -> List[List[]]:
     return [input_list[x : x + width] for x in range(0, len(input_list), width)]
 
 
