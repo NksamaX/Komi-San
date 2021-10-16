@@ -7,7 +7,7 @@ users_db = client(url)['users']['user']
 
 @bot.on_message(filters.command("start"))
 def update_stats(_,message):
-  users = users_db.find()
+  users = users_db.find({})
   mfs = []
   for x in users['user_id']:
     mfs.append(x)
@@ -20,7 +20,7 @@ def update_stats(_,message):
     
 @bot.on_message(filters.command("stats"))
 def stats(_,message):
-  users = users_db.find()
+  users = users_db.find({})
   mfs = []
   for x in users['user_id']:
     mfs.append(x)
