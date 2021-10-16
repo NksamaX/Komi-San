@@ -16,7 +16,7 @@ BOT_ID = 2025517298
     filters.command(["addchat", f"addchat@KomiSanRobot"])
 )
 async def addchat(_, m):
-    is_kuki = r.is_chat(int(m.chat.id))
+    is_kuki = r.is_kuki(int(m.chat.id))
     if not is_kuki:
         r.set_kuki(int(m.chat.id))
         m.reply_text(
