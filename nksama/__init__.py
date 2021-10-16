@@ -1,5 +1,5 @@
 from pyrogram import filters , Client
-from redis import StrictRedis
+from redis import Redis
 import os 
 
 bot = Client(
@@ -10,11 +10,16 @@ bot = Client(
     plugins=dict(root=f"{__name__}/plugins")
 )
 
-REDIS_URI = os.environ.get("REDIS_URL")
+r = os.environ.get("REDIS_URL").split(":")
+REDIS_PASSWORD = r[2]
+REDIS_PORT = r[1]
 
-REDIS_DB = StrictRedis.from_url(REDIS_URI
-                                ,decode_responses=True
-                               )
+REDIS_DB = Redis(
+    host=r[0],
+    password=REDIS_PASSWORD,
+    port=REDIS_PORT
+    decode_responses=True
+)
 
 REDIS_DB.ping()
 
