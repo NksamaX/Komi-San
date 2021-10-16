@@ -88,7 +88,7 @@ def pin(_,message):
     else:
         message.reply('Reply to a message')
 
-@app.on_message(filters.me & filters.command("kick","."))
+@bot.on_message(filters.command('kick'))
 def kick(_,message):
    if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
       message.kick_chat_member(message.reply_to_message.from_user.id)
