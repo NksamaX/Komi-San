@@ -8,12 +8,14 @@ except BaseException:
 
 def is_kuki(chat_id):
     chat = nk.literal_eval(REDIS_DB.get("KUKIBOT"))	
+    chat = list(chat)
     if chat_id in chat:
     	return True
     return False
 	   
 def set_kuki(chat_id):
     chat = nk.literal_eval(REDIS_DB.get("KUKIBOT"))
+    chat = list(chat)
     if chat_id not in chat:
     	chat.append(chat_id)
     	REDIS_DB.set("KUKIBOT", str(chat))
@@ -21,6 +23,7 @@ def set_kuki(chat_id):
 	
 def rm_kuki(chat_id):
 	chat = nk.literal_eval(REDIS_DB.get("KUKIBOT"))
+	chat = list(chat)
 	if chat_id in chat:
 		chat.remove(chat_id)
 		REDIS_DB.set("KUKIBOT", str(chat))
