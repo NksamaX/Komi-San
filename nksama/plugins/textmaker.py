@@ -2,8 +2,7 @@ from pyrogram import filters
 
 from nksama import bot
 
-
-@Daisy.on_message(filters.command("plat"))
+@bot.on_message(filters.command("plat"))
 async def plat(_,message):
     try:
         user = message.command[1]
