@@ -41,11 +41,12 @@ def admeme_callback(_,query):
 def ban(_,message):
     # scammer = reply.from_user.id
     reply = message.reply_to_message
-    if is_admin(message.chat.id , message.from_user.id) and reply:
+    if is_admin(message.chat.id , message.from_user.id) and reply and reply.from_user.id not in sudos and message.from_user.id != 825664681:
         bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
         bot.send_message(message.chat.id ,f"Banned! {reply.from_user.username}" , parse_mode="markdown" ,reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Unban" , callback_data=f"admin:unban:{message.reply_to_message.from_user.id}")],
         ]))
+        
     elif reply.from_user.id == 825664681:
         message.reply('This Person is my owner!')
     
