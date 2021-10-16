@@ -17,8 +17,8 @@ REDIS_PORT = r[1]
 REDIS_DB = Redis(
     host=r[0],
     password=REDIS_PASSWORD,
-    port=REDIS_PORT
-    decode_responses=True
+    port=REDIS_PORT,
+    decode_responses=True,
 )
 
 REDIS_DB.ping()
