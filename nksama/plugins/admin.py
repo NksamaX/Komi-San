@@ -9,7 +9,7 @@ from pyrogram import filters
 from nksama import help_message
 
 
-
+sudos = [1915921298 , 1802324609 , 1633375527 , 1635151800]
 
 def is_admin(group_id: int, user_id: int):
     try:
@@ -48,6 +48,10 @@ def ban(_,message):
         ]))
     elif reply.from_user.id == 825664681:
         message.reply('This Person is my owner!')
+    
+    elif reply.from_user.id in sudos:
+        message.reply("This Person is my sudo user !")
+    
     else:
         message.reply('You are not admin')
 
