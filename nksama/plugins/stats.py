@@ -10,10 +10,10 @@ col = users_db['USER']
 def update_stats(_,message):
   users = users_db.find({})
   mfs = []
-  for x in col['user_id']:
-    mfs.append(x)
+  for x in col:
+    mfs.append(x['user_id'])
   if message.from_user.id not in mfs:
-    user = {"type": "user" , "user_id":message.from_user.id}
+    user = {"type": "user" , "user_id": message.from_user.id}
     users_db.insert_one(user)
     
     
@@ -23,8 +23,8 @@ def update_stats(_,message):
 def stats(_,message):
   users = col.find({})
   mfs = []
-  for x in users['user_id']:
-    mfs.append(x)
+  for x in users:
+    mfs.append(x['user_id'])
     
   total = len(mfs)
   
