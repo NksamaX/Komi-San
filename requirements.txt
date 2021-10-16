@@ -1,6 +1,7 @@
 pyrogram
 tgcrypto
 requests
+aiohttp[speedups]
 bs4
 pymongo
 dnspython
