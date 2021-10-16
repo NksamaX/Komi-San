@@ -11,7 +11,7 @@ bot = Client(
     plugins=dict(root=f"{__name__}/plugins")
 )
 
-REDIS_DB = StrictRedis.from_url(REDIS_URLI decode_responses=True)
+REDIS_DB = StrictRedis.from_url(REDIS_URI,decode_responses=True)
 
 REDIS_DB.ping()
 
