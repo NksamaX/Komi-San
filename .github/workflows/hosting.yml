@@ -13,6 +13,7 @@ env:
   BOT_TOKEN: ${{secrets.BOT_TOKEN}}
   MONGO_URL: ${{secrets.MONGO_URL}}
   REDIS_URL: ${{secrets.REDIS_URL}}
+  SQL_URL: ${{secrets.SQL_URL}}
     
 jobs:
   build:
