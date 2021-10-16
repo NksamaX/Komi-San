@@ -15,24 +15,24 @@ BOT_ID = 2025517298
 @bot.on_message(
     filters.command(["addchat", f"addchat@KomiSanRobot"])
 )
-async def addchat(_, m):
-    is_kuki = r.is_kuki(int(m.chat.id))
+async def addchat(_, message):
+    is_kuki = r.is_kuki(int(message.chat.id))
     if not is_kuki:
-        r.set_kuki(int(m.chat.id))
+        r.set_kuki(int(message.chat.id))
         m.reply_text(
-            f"kuki AI Successfully {m.chat.id}"
+            f"kuki AI Successfully {message.chat.id}"
         )
     await asyncio.sleep(5)
 
 @bot.on_message(
     filters.command(["rmchat", f"rmchat@KomiSanRobot"])
 )
-async def rmchat(_, m):
-    is_kuki = r.is_kuki(int(m.chat.id))
+async def rmchat(_, message):
+    is_kuki = r.is_kuki(int(message.chat.id))
     if not is_kuki:
-        r.rm_kuki(int(m.chat.id))
+        r.rm_kuki(int(message.chat.id))
         m.reply_text(
-            f" AI disabled successfully {m.chat.id}"
+            f" AI disabled successfully {message.chat.id}"
         )
     await asyncio.sleep(5)
 
