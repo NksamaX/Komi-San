@@ -5,7 +5,7 @@ from pyrogram import filters
 import requests
 from nksama import help_message 
 from nksama.plugins.helpers import call_back_in_filter
-
+from nksama.plugins.helptext.Help_Text import helpp
 
 
 @bot.on_message(filters.command('pat'))
@@ -13,8 +13,10 @@ def pat(_,message):
     reply = message.reply_to_message
     if reply:
         res = requests.get('https://some-random-api.ml/animu/pat').json()
-        url = res['url']
+        url = res['link']
         reply.reply_animation(url)
         
     else:
         message.reply_animation(url)
+
+        
