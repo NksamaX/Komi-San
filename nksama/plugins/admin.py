@@ -89,17 +89,18 @@ def pin(_,message):
         message.reply('Reply to a message')
 
         
-@bot.on_message(filters.command('promote')) 
-def promote(_,message):
-    if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
-       message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
 
 @bot.on_message(filters.command('promote')) 
 def promote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
        message.chat.promote_member(message.reply_to_message.from_user.id)
        message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
+
+@bot.on_message(filters.command('demote')) 
+def demote(_,message):
+    if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
+       message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
+       message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
 
      
 help_message.append({
