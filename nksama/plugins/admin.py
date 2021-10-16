@@ -92,27 +92,10 @@ def pin(_,message):
 @bot.on_message(filters.command('promote')) 
 def promote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.promote_chat_member(message.chat.id, user, can_manage_chat=True, can_change_info=True, can_delete_messages=True, can_restrict_members=True, can_invite_users=True, can_pin_messages=True, can_manage_voice_chats=True)
+       message.chat.promote_member(message.reply_to_message.from_user.id)
        message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
-     
-@bot.on_message(filters.command('demote')) 
-def demote(_,message):
-    if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.promote_chat_member(
-            message.chat.id,
-            user,
-            is_anonymous=False,
-            can_change_info=False,
-            can_delete_messages=False,
-            can_edit_messages=False,
-            can_invite_users=False,
-            can_promote_members=False,
-            can_restrict_members=False,
-            can_pin_messages=False,
-            can_post_messages=False,
-       )
-       message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
 
+     
 help_message.append({
     "Module_Name": "admin" ,
     "Help": """
