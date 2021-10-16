@@ -4,7 +4,6 @@ import os
 
 bot = Client(
     'bot',
-    REDIS_URI = os.environ.get("REDIS_URI"),
     api_id=os.environ.get('API_ID'),
     api_hash=os.environ['API_HASH'],
     bot_token=os.environ['BOT_TOKEN'],
