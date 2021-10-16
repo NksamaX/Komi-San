@@ -96,8 +96,7 @@ async def leave(client, message):
         except RPCError as e:
             print(e)
 
-@app.on_message(filters.command("leave"))
-@admin
+@app.on_message(filters.command("invitelink"))
 async def invitelink(client, message):
     chat_id = message.chat.id
     try:
