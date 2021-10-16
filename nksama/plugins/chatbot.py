@@ -7,7 +7,7 @@ import asyncio
 from pyrogram import filters
 from time import time
 from nksama import bot
-import nksama.plugins.redis.kuki as r
+import nksama.plugins.sql.kuki_sql as sql
 
 
 BOT_ID = 2025517298
@@ -17,9 +17,9 @@ BOT_ID = 2025517298
 )
 async def addchat(_, message):
     chid = message.chat.id
-    is_kuki = r.is_kuki(chid)
+    is_kuki = sql.is_kuki(chid)
     if not is_kuki:
-        r.set_kuki(int(message.chat.id))
+        sql.set_kuki(int(message.chat.id))
         m.reply_text(
             f"kuki AI Successfully {message.chat.id}"
         )
@@ -30,9 +30,9 @@ async def addchat(_, message):
 )
 async def rmchat(_, message):
     chid = message.chat.id
-    is_kuki = r.is_kuki(chid)
+    is_kuki = sql.is_kuki(chid)
     if not is_kuki:
-        r.rm_kuki(int(message.chat.id))
+        sql.rm_kuki(int(message.chat.id))
         m.reply_text(
             f" AI disabled successfully {message.chat.id}"
         )
@@ -51,7 +51,7 @@ async def rmchat(_, message):
 async def kuki(_, message):
     try:
         chid = message.chat.id
-        is_kuki = r.is_kuki(chid)
+        is_kuki = sql.is_kuki(chid)
         if not is_kuki:
             return
         if not message.reply_to_message:
