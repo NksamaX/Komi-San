@@ -1,5 +1,4 @@
 import re
-import emoji
 import aiohttp
 import requests
 import asyncio
