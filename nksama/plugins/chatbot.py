@@ -48,7 +48,7 @@ async def rmchat(_, m):
     group=2,
 )
 async def kuki(_, message):
-    is_kuki = r.is_kuki(int(message.chat.id)):
+    is_kuki = r.is_kuki(int(message.chat.id))
     if not is_kuki:
         return
     if not message.reply_to_message:
