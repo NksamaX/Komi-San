@@ -92,6 +92,12 @@ def pin(_,message):
 @bot.on_message(filters.command('promote')) 
 def promote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
+       message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
+       message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
+
+@bot.on_message(filters.command('promote')) 
+def promote(_,message):
+    if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
        message.chat.promote_member(message.reply_to_message.from_user.id)
        message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
 
