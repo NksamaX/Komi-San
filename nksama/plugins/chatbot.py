@@ -16,7 +16,7 @@ BOT_ID = 2025517298
 @bot.on_message(
     filters.command(["addchat", f"addchat@{BOT_USERNAME}"]) & ~filters.edited & ~filters.bot & filters.private
 )
-async addchat(_, m):
+async def addchat(_, m):
     is_kuki = r.is_chat(int(m.chat.id))
     if not is_kuki:
         r.set_kuki(int(m.chat.id))
@@ -28,7 +28,7 @@ async addchat(_, m):
 @bot.on_message(
     filters.command(["rmchat", f"rmchat@KomiSanRobot"]) & ~filters.edited & ~filters.bot & filters.private
 )
-async rmchat(_, m):
+async def rmchat(_, m):
     is_kuki = r.is_kuki(int(m.chat.id))
     if not is_kuki:
         r.rm_kuki(int(m.chat.id))
