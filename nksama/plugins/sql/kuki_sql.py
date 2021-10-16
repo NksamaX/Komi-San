@@ -28,15 +28,8 @@ def set_kuki(chat_id):
         SESSION.add(kukichat)
         SESSION.commit()
 
-def add_mod(user_id, chat_id):
-    with INSERTION_LOCK:
-        kukichat = SESSION.query(KukiChats).get(str(user_id))
-        if not kukichat:
-            kukichat = KukiChats(str(user_id))
-        SESSION.add(kukichat)
-        SESSION.commit()
 
-def rem_kuki(chat_id):
+def rm_kuki(chat_id):
     with INSERTION_LOCK:
         kukichat = SESSION.query(KukiChats).get(str(chat_id))
         if kukichat:
