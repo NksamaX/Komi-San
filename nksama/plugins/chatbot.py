@@ -66,7 +66,7 @@ async def kuki(_, message):
         Kuki = requests.get(f"https://www.kukiapi.xyz/api/apikey=KUKIwrLK87gL6/kuki/moezilla/message={text}").json()
         nksamax = f"{Kuki['reply']}"
         if "Komi" in text or "komi" in text or "KOMI" in text:
-            await bot.send_chat_action(message.chat.id, "typing")
+            await bot.send_chat_action(chid, "typing")
         
         await message.reply_text(nksamax)
     
