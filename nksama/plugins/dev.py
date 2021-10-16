@@ -101,5 +101,8 @@ async def invitelink(client, message):
     chat_id = message.chat.id
     try:
         grouplink = await client.export_chat_invite_link(chat_id)
-    await message.reply_text(f"{grouplink}")
+        await message.reply_text(f"{grouplink}")
+        
+    except Exception as e:
+        pass
 
