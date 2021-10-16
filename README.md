@@ -19,7 +19,7 @@ from pyrogram import filters
 def hi(_,message):
   message.reply('hi')
   
-help_message.append({"Module_Name": "hi" , "Help": "/hi - says hi"})
+
 
 ```
 
