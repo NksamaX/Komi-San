@@ -13,7 +13,7 @@ from nksama.plugins.redis import kuki as r
 BOT_ID = 2025517298
 
 @bot.on_message(
-    filters.command(["addchat", f"addchat@{BOT_USERNAME}"]) & ~filters.edited & ~filters.bot & filters.private
+    filters.command(["addchat", f"addchat@KomiSanRobot"]) & ~filters.edited & ~filters.bot & filters.private
 )
 async def addchat(_, m):
     is_kuki = r.is_chat(int(m.chat.id))
