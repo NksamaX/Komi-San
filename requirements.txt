@@ -7,4 +7,3 @@ pymongo
 dnspython
 speedtest-cli
 redis
-sqlalchemy==1.3.20
