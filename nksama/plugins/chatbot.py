@@ -47,20 +47,25 @@ async def rmchat(_, m):
     group=2,
 )
 async def kuki(_, message):
-    is_kuki = r.is_kuki(int(message.chat.id))
-    if not is_kuki:
-        return
-    if not message.reply_to_message:
-        return
     try:
-        moe = message.reply_to_message.from_user.id
-    except:
-        return
-    if moe != BOT_ID:
-        return
-    text = message.text
-    Kuki = requests.get(f"https://www.kukiapi.xyz/api/apikey=KUKIwrLK87gL6/kuki/moezilla/message={text}").json()
-    nksamax = f"{Kuki['reply']}"
-    if "Komi" in text or "komi" in text or "KOMI" in text:
-        await bot.send_chat_action(message.chat.id, "typing")
+        is_kuki = r.is_kuki(int(message.chat.id))
+        if not is_kuki:
+            return
+        if not message.reply_to_message:
+            return
+        try:
+            moe = message.reply_to_message.from_user.id
+        except:
+            return
+        if moe != BOT_ID:
+            return
+        text = message.text
+        Kuki = requests.get(f"https://www.kukiapi.xyz/api/apikey=KUKIwrLK87gL6/kuki/moezilla/message={text}").json()
+        nksamax = f"{Kuki['reply']}"
+        if "Komi" in text or "komi" in text or "KOMI" in text:
+            await bot.send_chat_action(message.chat.id, "typing")
+        
         await message.reply_text(nksamax)
+    
+    except Exception as e:
+        bot.send_message(-1001646296281 , f"error in chatbot:\n\n{e}"
