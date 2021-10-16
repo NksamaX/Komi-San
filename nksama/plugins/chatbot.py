@@ -7,7 +7,7 @@ import asyncio
 from pyrogram import filters
 from time import time
 from nksama import bot
-from nksama.plugins.redis import kuki as r
+from nksama.plugins.redis.kuki as r
 
 
 BOT_ID = 2025517298
