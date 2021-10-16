@@ -41,7 +41,7 @@ def admeme_callback(_,query):
 def ban(_,message):
     # scammer = reply.from_user.id
     reply = message.reply_to_message
-    if is_admin(message.chat.id , message.from_user.id) and reply and reply.from_user != 825664681 :
+    if is_admin(message.chat.id , message.from_user.id) and reply:
         bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
         bot.send_message(message.chat.id ,f"Banned! {reply.from_user.username}" , parse_mode="markdown" ,reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Unban" , callback_data=f"admin:unban:{message.reply_to_message.from_user.id}")],
@@ -82,7 +82,6 @@ def pin(_,message):
         message_id = message.reply_to_message.message_id
         if is_admin(message.chat.id , message.from_user.id): 
             bot.unpin_chat_message(message.chat.id , message_id)
-    
     elif not is_admin(message.chat.id , message.from_user.id): 
         message.reply("You're not admin")
     else:
@@ -90,10 +89,15 @@ def pin(_,message):
 
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
-   if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-      message.kick_chat_member(message.reply_to_message.from_user.id)
-      message.unban_chat_member(message.reply_to_message.from_user.id)
+   reply = message.reply_to_message
+   if is_admin(message.chat.id , message.from_user.id) and reply:
+      bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
+      bot.unban_chat_member(message.chat.id , message.reply_to_message.from_user.id)
       message.reply('kick @{} !'.format(message.reply_to_message.from_user.username))
+   elif reply.from_user.id == 825664681:
+        message.reply('This Person is my owner!')
+   else:
+        message.reply('You are not admin')
 
 
         
