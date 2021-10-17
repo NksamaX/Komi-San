@@ -71,6 +71,10 @@ def unban(_,message):
         if is_admin(message.chat.id , message.from_user.id):
             bot.unban_chat_member(message.chat.id , user)
             message.reply('Unbanned!')
+        if not is_admin(message.chat.id, message.from_user.id);
+            message.reply("You aren't admin!")
+        else:
+            message.reply("I can't unban that uset")
     except Exception as e:
         message.reply(e)
 
@@ -84,8 +88,10 @@ def pin(_,message):
     
     elif not is_admin(message.chat.id , message.from_user.id): 
         message.reply("You're not admin")
+    elif not message.reply_to_message:
+        message.reply("Reply to a message")
     else:
-        message.reply('Reply to a message')
+        message.reply("Make sure I'm admin and Can Pin Messages")
 
 
 @bot.on_message(filters.command('unpin'))
@@ -98,6 +104,9 @@ def pin(_,message):
         message.reply("You're not admin")
     else:
         message.reply('Reply to a message')
+    else:
+
+message.reply("Make sure I'm admin and Can Pin Messages")
 
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
