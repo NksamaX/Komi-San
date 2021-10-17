@@ -4,7 +4,7 @@ from nksama import bot
 from pyrogram import filters 
 from nksama import help_message
 
-group_id = -1001544622735
+group_id = 1544622735
 
 @bot.on_message(filters.command('start') & filters.chat(group_id))
 def start(_,message):
