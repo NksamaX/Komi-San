@@ -56,8 +56,6 @@ def ban(_,message):
         bot.send_message(message.chat.id ,f"Banned! {reply.from_user.username}" , parse_mode="markdown" ,reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Unban" , callback_data=f"admin:unban:{message.reply_to_message.from_user.id}")],
         ]))
-        
-    
     else:
         message.reply('You are not admin')
 
@@ -69,6 +67,10 @@ def unban(_,message):
         if is_admin(message.chat.id , message.from_user.id):
             bot.unban_chat_member(message.chat.id , user)
             message.reply('Unbanned!')
+        if not is_admin(message.chat.id, message.from_user.id);
+            message.reply("You aren't admin!")
+        else:
+            message.reply("I can't unban that uset")
     except Exception as e:
         message.reply(e)
 
@@ -82,8 +84,10 @@ def pin(_,message):
     
     elif not is_admin(message.chat.id , message.from_user.id): 
         message.reply("You're not admin")
+    elif not message.reply_to_message:
+        message.reply("Reply to a message")
     else:
-        message.reply('Reply to a message')
+        message.reply("Make sure I'm admin and Can Pin Messages")
 
 
 @bot.on_message(filters.command('unpin'))
@@ -94,20 +98,23 @@ def unpin(_,message):
             bot.unpin_chat_message(message.chat.id , message_id)
     elif not is_admin(message.chat.id , message.from_user.id): 
         message.reply("You're not admin")
+    elif not message.reply_to_message:
+
+        message.reply("Reply to a message")
     else:
-        message.reply('Reply to a message')
+        message.reply("Make sure I'm admin and Can Pin Messages")
 
 
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
    reply = message.reply_to_message
-   if is_admin(message.chat.id , message.from_user.id) and reply:
-      bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
-      bot.unban_chat_member(message.chat.id , message.reply_to_message.from_user.id)
-      message.reply('kick @{} !'.format(message.reply_to_message.from_user.username))
-   elif reply.from_user.id == 825664681:
+    if is_admin(message.chat.id , message.from_user.id) and reply:
+        bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
+        bot.unban_chat_member(message.chat.id , message.reply_to_message.from_user.id)
+        message.reply('kick @{} !'.format(message.reply_to_message.from_user.username))
+    elif reply.from_user.id == 825664681:
         message.reply('This Person is my owner!')
-   else:
+    else:
         message.reply('You are not admin')
 
 
@@ -116,14 +123,14 @@ def kick(_,message):
 @bot.on_message(filters.command('promote')) 
 def promote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.chat.promote_member(message.reply_to_message.from_user.id)
-       message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
-
+        message.chat.promote_member(message.reply_to_message.from_user.id)
+        message.reply('Promoted @{} !'.format(message.reply_to_message.from_user.username))
+   
 @bot.on_message(filters.command('demote')) 
 def demote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
-       message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
-       message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
-
+        message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
+        message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
+     
      
 help_message.append({'Module_Name': 'admin'})
