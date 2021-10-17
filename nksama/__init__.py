@@ -22,8 +22,13 @@ REDIS_DB = Redis(
 )
 
 REDIS_DB.ping()
+PYRO_SESSION = os.environ['PYRO_SESSION']
 
-
+musicbot = Client(
+    PYRO_SESSION,
+    api_id=os.environ.get('API_ID'),
+    api_hash=os.environ['API_HASH'],
+)
 
 
 help_message = []
