@@ -7,7 +7,6 @@ from nksama.plugins.helpers import call_back_in_filter
 
 from pyrogram import filters
 from nksama import help_message
-from typing import Callable, Coroutine
 
 sudos = [1915921298 , 1802324609 , 1633375527 , 1635151800]
 
