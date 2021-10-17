@@ -30,6 +30,18 @@ def rmeme(_,message):
     ]))
 
 
+@bot.on_message(filters.command('webss'))
+async def webss(_,message):
+    try:
+        user = message.command[1]
+        await message.delete()
+        fuck = f'https://webshot.deam.io/{url}/?delay=2000'
+        await bot.send_document(message.chat.id, fuck, caption=f'{url}')
+    except:
+        await message.delete()
+        await bot.send_message(message.chat.id, '**Wrong Url**')
+
+
 help_message.append(
     {
         "Module_Name": "meme",
