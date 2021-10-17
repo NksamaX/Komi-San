@@ -37,9 +37,4 @@ async def webss(client, message):
         fuck = f'https://webshot.deam.io/{url}/?delay=2000'
         await client.send_document(message.chat.id, fuck, caption=f'{url}')
 
-help_message.append(
-    {
-        "Module_Name": "meme",
-        "Help": "/rmeme - to get random memes from reddit"
-    }
-)
+help_message.append({"Module_Name": "meme"})
