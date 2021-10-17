@@ -5,11 +5,9 @@ from nksama import bot
 import os
 
 
-try:
-  
-  WALL_API_KEY = os.environ['WALL_API_KEY']
-except:
-  WALL_API_KEY = bot.get_messages(-1001646296281 , message_ids=370).text.split(":")[1] # api key from logs channel
+
+WALL_API_KEY = os.environ['WALL_API_KEY']
+
 
 
 
