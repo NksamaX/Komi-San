@@ -108,7 +108,7 @@ def unpin(_,message):
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
    reply = message.reply_to_message
-    if is_admin(message.chat.id , message.from_user.id) and reply:
+   if is_admin(message.chat.id , message.from_user.id) and reply:
         bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
         bot.unban_chat_member(message.chat.id , message.reply_to_message.from_user.id)
         message.reply('kick @{} !'.format(message.reply_to_message.from_user.username))
