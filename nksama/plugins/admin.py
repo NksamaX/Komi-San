@@ -126,12 +126,4 @@ def demote(_,message):
        message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
 
      
-help_message.append({
-    "Module_Name": "admin" ,
-    "Help": """
-/ban - reply to a user
-/unban user id or username
-/pin - reply to a message
-/unpin - reply to a message
-
-"""})
+help_message.append({'Module_Name': 'admin'})
