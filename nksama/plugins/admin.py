@@ -102,12 +102,13 @@ def pin(_,message):
             bot.unpin_chat_message(message.chat.id , message_id)
     elif not is_admin(message.chat.id , message.from_user.id): 
         message.reply("You're not admin")
-    else:
-        message.reply('Reply to a message')
+    elif not message.reply_to_message:
+
+        message.reply("Reply to a message")
+
     else:
 
-message.reply("Make sure I'm admin and Can Pin Messages")
-
+        message.reply("Make sure I'm admin and Can Pin Messages")
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
    reply = message.reply_to_message
