@@ -35,7 +35,7 @@ async def vplay(_,message):
     await fk.edit('playing...')
 
     
-@bot.on_message(filters.command('leavevc'))
-async def leavevc(_,message):
-  await calls.stop()
-  await calls.leave_current_group_call()
+@bot.on_message(filters.command('pause'))
+async def pause(_,message):
+  await calls.pause_stream()
+
