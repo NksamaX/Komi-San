@@ -6,7 +6,6 @@ from pyrogram.types import Message
 import requests
 from nksama import help_message 
 from nksama.plugins.helpers import call_back_in_filter
-from nksama.utils.errors import capture_err
 
 @bot.on_callback_query(call_back_in_filter('meme'))
 def callback_meme(_,query):
@@ -30,24 +29,6 @@ def rmeme(_,message):
         [InlineKeyboardButton("Next" , callback_data="meme:next")]
     ]))
 
-@bot.on_message(filters.command("webss"))
-@capture_err
-async def take_ss(_, message: Message):
-    try:
-        if len(message.command) != 2:
-            return await message.reply_text("Give A Url To Fetch Screenshot.")
-        url = message.text.split(None, 1)[1]
-        m = await message.reply_text("**Taking Screenshot**")
-        await m.edit("**Uploading**")
-        try:
-            await message.reply_photo(
-                photo=f"https://webshot.amanoteam.com/print?q={url}",
-                quote=False,
-            )
-        except TypeError:
-            return await m.edit("No Such Website.")
-        await m.delete()
-    except Exception as e:
 
 help_message.append(
     {
