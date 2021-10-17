@@ -1,9 +1,9 @@
 from pyrogram import filters
-from nksama import bot
+from nksama import bot , musicbot
 import pytgcalls
 
 
-calls = pytgcalls.GroupCallFactory(bot).get_group_call()
+calls = pytgcalls.GroupCallFactory(musicbot).get_group_call()
 
 
 @bot.on_message(filters.command('play'))
