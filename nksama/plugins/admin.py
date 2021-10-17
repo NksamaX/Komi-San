@@ -25,14 +25,6 @@ def is_admin(group_id: int, user_id: int):
         return False
 
 
-def admins_only(k: Callable) -> Coroutine:
-    async def admins(client, message):
-        if message.from_user.id in sudos:
-        if admin.id == message.from_user.id:
-        if client.is_admin(message):
-            await k(bot, message)
-    return True
-
 
 
 @bot.on_callback_query(call_back_in_filter("admin"))
