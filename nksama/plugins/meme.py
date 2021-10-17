@@ -34,13 +34,8 @@ def rmeme(_,message):
 async def webss(client, message):
     try:
         user = message.command[1]
-        await message.delete()
         fuck = f'https://webshot.deam.io/{url}/?delay=2000'
         await client.send_document(message.chat.id, fuck, caption=f'{url}')
-    except:
-        await message.delete()
-        await client.send_message(message.chat.id, '**Wrong Url**')
-
 
 help_message.append(
     {
