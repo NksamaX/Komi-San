@@ -1,4 +1,4 @@
-pyrogram
+https://github.com/pyrogram/pyrogram
 tgcrypto
 requests
 aiohttp[speedups]
@@ -7,3 +7,4 @@ pymongo
 dnspython
 speedtest-cli
 redis
+pytgcalls==3.0.0.dev19
