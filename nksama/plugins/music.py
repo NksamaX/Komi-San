@@ -8,6 +8,10 @@ calls = pytgcalls.GroupCallFactory(musicbot).get_group_call()
 
 @bot.on_message(filters.command('play'))
 async def play(_,message):
+  try:
+    musicbot.start()
+  except:
+    pass
   reply = message.reply_to_message
   if reply:
     fk = await message.reply('Downloading....')
@@ -19,9 +23,13 @@ async def play(_,message):
     
 @bot.on_message(filters.command('vplay'))
 async def vplay(_,message):
+  try:
+    musicbot.start()
+  except:
+    pass
   reply = message.reply_to_message
   if reply:
-    path = reply.download()
+    path = await reply.download()
     await calls.join(message.chat.id)
     await calls.start_video(path)
     await fk.edit('playing...')
@@ -29,5 +37,5 @@ async def vplay(_,message):
     
 @bot.on_message(filters.command('leavevc'))
 async def leavevc(_,message):
-  await group_call.stop()
-  await group_call.leave_current_group_call()
+  await calls.stop()
+  await calls.leave_current_group_call()
