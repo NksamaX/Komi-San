@@ -24,8 +24,6 @@ def is_admin(group_id: int, user_id: int):
         # print('Not admin')
         return False
 
-        from pyrogram import filters 
-
 
 @bot.on_callback_query(call_back_in_filter("admin"))
 def admeme_callback(_,query):
