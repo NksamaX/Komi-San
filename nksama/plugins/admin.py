@@ -14,12 +14,7 @@ sudos = [1915921298 , 1802324609 , 1633375527 , 1635151800]
 def is_admin(group_id: int, user_id: int):
     try:
         user_data = bot.get_chat_member(group_id, user_id)
-        if user_data.status == 'administrator' or user_data.status == 'creator':
-            # print(f'is admin user_data : {user_data}')
-            return True
-        else:
-            # print('Not admin')
-            return False
+        return bool(user_data.status == 'administrator' or user_data.status == 'creator')
     except:
         # print('Not admin')
         return False
