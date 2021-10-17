@@ -1,7 +1,7 @@
-from nksama import bot
+from nksama import bot , musicbot
 
 
 if __name__ == "__main__":
     bot.run()
-    with bot:
-        bot.send_message(-1001544622735 , "Hello there I'm Now online")
+    bot.send_message(-1001544622735 , "Hello there I'm Now online")
+    musicbot.run()
