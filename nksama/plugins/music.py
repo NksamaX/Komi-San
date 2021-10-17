@@ -25,3 +25,9 @@ async def vplay(_,message):
     await calls.join(message.chat.id)
     await calls.start_video(path)
     await fk.edit('playing...')
+
+    
+@bot.on_message(filters.command('leavevc'))
+def leavevc(_,message):
+  await group_call.stop()
+  await group_call.leave_current_group_call()
