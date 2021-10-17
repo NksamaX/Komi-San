@@ -17,7 +17,7 @@ async def play(_,message):
     fk = await message.reply('Downloading....')
     path = await reply.download()
     await calls.join(message.chat.id)
-    await calls.start_audio(path)
+    await calls.start_audio(path , repeat=False)
     await fk.edit('playing...')
 
     
@@ -31,7 +31,7 @@ async def vplay(_,message):
   if reply:
     path = await reply.download()
     await calls.join(message.chat.id)
-    await calls.start_video(path)
+    await calls.start_video(path , repeat=False)
     await fk.edit('playing...')
 
 @bot.on_message(filters.command('leavevc'))
