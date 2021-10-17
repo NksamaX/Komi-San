@@ -1,4 +1,4 @@
-https://github.com/pyrogram/pyrogram
+git+https://github.com/pyrogram/pyrogram@master
 tgcrypto
 requests
 aiohttp[speedups]
