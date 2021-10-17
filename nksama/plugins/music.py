@@ -9,7 +9,7 @@ calls = pytgcalls.GroupCallFactory(musicbot).get_group_call()
 @bot.on_message(filters.command('play'))
 async def play(_,message):
   try:
-    musicbot.start()
+    await musicbot.start()
   except:
     pass
   reply = message.reply_to_message
@@ -24,7 +24,7 @@ async def play(_,message):
 @bot.on_message(filters.command('vplay'))
 async def vplay(_,message):
   try:
-    musicbot.start()
+    await musicbot.start()
   except:
     pass
   reply = message.reply_to_message
