@@ -86,17 +86,6 @@ def pin(_,message):
         message.reply('Reply to a message')
 
 
-@bot.on_message(filters.command('unpin'))
-def pin(_,message):
-    if message.reply_to_message:
-        message_id = message.reply_to_message.message_id
-        if is_admin(message.chat.id , message.from_user.id): 
-            bot.unpin_chat_message(message.chat.id , message_id)
-    elif not is_admin(message.chat.id , message.from_user.id): 
-        message.reply("You're not admin")
-    else:
-        message.reply('Reply to a message')
-
 @bot.on_message(filters.command('kick'))
 def kick(_,message):
    reply = message.reply_to_message
