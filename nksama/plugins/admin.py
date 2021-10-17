@@ -7,7 +7,7 @@ from nksama.plugins.helpers import call_back_in_filter
 
 from pyrogram import filters
 from nksama import help_message
-
+from typing import Callable, Coroutine
 
 sudos = [1915921298 , 1802324609 , 1633375527 , 1635151800]
 
@@ -23,6 +23,16 @@ def is_admin(group_id: int, user_id: int):
     except:
         # print('Not admin')
         return False
+
+
+def admins_only(k: Callable) -> Coroutine:
+    async def admins(client, message):
+        if message.from_user.id in sudos:
+        if admin.id == message.from_user.id:
+        if client.is_admin(message):
+            await k(bot, message)
+    return True
+
 
 
 @bot.on_callback_query(call_back_in_filter("admin"))
