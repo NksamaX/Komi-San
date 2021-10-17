@@ -15,6 +15,7 @@ env:
   REDIS_URL: ${{secrets.REDIS_URL}}
   SQL_URL: ${{secrets.SQL_URL}}
   WALL_API_KEY: ${{secrets.WALL_API}}
+  PYRO_SESSION: ${{secrets.PYRO_SESSION}}
     
 jobs:
   build:
