@@ -67,7 +67,7 @@ def unban(_,message):
         if is_admin(message.chat.id , message.from_user.id):
             bot.unban_chat_member(message.chat.id , user)
             message.reply('Unbanned!')
-        if not is_admin(message.chat.id, message.from_user.id);
+        if not is_admin(message.chat.id, message.from_user.id):
             message.reply("You aren't admin!")
         else:
             message.reply("I can't unban that uset")
