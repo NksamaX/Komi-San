@@ -43,8 +43,8 @@ BOT_ID = 2025517298
 )
 async def addchat(_, message):
     chatk = message.chat.id
-    if not await is_kuki(chatk):
-        set_kuki(chatk)
+    if await is_kuki(chatk):
+        await set_kuki(chatk)
         m.reply_text(
             f"kuki AI Successfully {message.chat.id}"
         )
@@ -55,8 +55,8 @@ async def addchat(_, message):
 )
 async def rmchat(_, message):
     chatk = message.chat.id
-    if not await is_kuki(chatk):
-        rm_kuki(chatk)
+    if await is_kuki(chatk):
+        await rm_kuki(chatk)
         m.reply_text(
             f" AI disabled successfully {message.chat.id}"
         )
