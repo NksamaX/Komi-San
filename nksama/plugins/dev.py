@@ -84,17 +84,11 @@ def speedtest_(_,message):
 
 @app.on_message(filters.command("leave") & filters.user(owner))
 async def leave(client, message):
-    if len(message.command) == 1:
-        try:
-            await client.leave_chat(message.chat.id)
-        except RPCError as e:
-            print(e)
-    else:
-        cmd = message.text.split(maxsplit=1)[1]
-        try:
-            await client.leave_chat(int(cmd))
-        except RPCError as e:
-            print(e)
+    cmd = message.text.split(maxsplit=1)[1]
+    try:
+        await client.leave_chat(int(cmd))
+    except RPCError as e:
+        print(e)
 
 @app.on_message(filters.command("invitelink"))
 async def invitelink(client, message):
