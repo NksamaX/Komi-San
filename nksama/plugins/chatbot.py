@@ -58,7 +58,7 @@ BOT_ID = 2025517298
 )
 async def addchat(_, message):
     chatk = message.chat.id
-    is_kuki = sql.is_kuki(chatk)
+    is_kuki = is_kuki(chatk)
     if not is_kuki:
         set_kuki(chatk)
         m.reply_text(
@@ -71,7 +71,7 @@ async def addchat(_, message):
 )
 async def rmchat(_, message):
     chatk = message.chat.id
-    is_kuki = sql.is_kuki(chatk)
+    is_kuki = is_kuki(chatk)
     if not is_kuki:
         rm_kuki(chatk)
         m.reply_text(
