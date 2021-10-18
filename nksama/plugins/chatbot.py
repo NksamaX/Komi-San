@@ -1,4 +1,5 @@
-from nksama import database
+from nksama.db import MONGO_URL as k
+from pymongo import MongoClient as client
 import re
 import aiohttp
 import requests
@@ -10,7 +11,7 @@ from time import time
 from nksama import bot
 
 
-kuki = database.kuki
+kuki = client(k)['KUKI']
 
 
 async def is_kuki(chat_id: int) -> bool:
