@@ -1,17 +1,28 @@
-from nksama.db import MONGO_URL as k
-from pymongo import MongoClient as client
+from motor import motor_asyncio
+from odmantic import AIOEngine
+from pymongo import MongoClient
 import re
 import aiohttp
 import requests
 import asyncio
+import os
 
 
 from pyrogram import filters
 from time import time
 from nksama import bot
 
+MONGO_URL = os.environ.get('MONGO_URL')
 
-kuki = client(k)['KUKI']
+MONGO_DB = "Komi"
+
+mongodb = MongoClient(MONGO_URL, 27017)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_URL)
+db = motor[MONGO_DB]
+
+engine = AIOEngine(motor, MONGO_DB)
+
+kuki = db.kuki
 
 
 async def is_kuki(chat_id: int) -> bool:
