@@ -1,4 +1,4 @@
-from nksama.db import MONGO_URL as k
+from nksama.db import MONGO_URL
 import re
 import aiohttp
 import requests
@@ -10,7 +10,7 @@ from time import time
 from nksama import bot
 
 
-kuki = k["KUKIBOT"]
+kuki = MONGO_URL.kuki
 
 
 async def is_kuki(chat_id: int) -> bool:
