@@ -22,28 +22,32 @@ db = motor[MONGO_DB]
 
 engine = AIOEngine(motor, MONGO_DB)
 
-kukidb = db.kuki
+kuki = db["KUKIBOT"]
 
 
-async def is_kuki(chat_id: int) -> bool:
-    ai = await kukidb.find_one({"chat_id": chat_id})
+def set_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
+    if ai:
+        return False
+    else:
+        kuki.insert_one({"chat_id": chat_id})
+        return True
+
+
+def rm_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
     if not ai:
         return False
-    return True
+    else:
+        kuki.delete_one({"chat_id": chat_id})
+        return True
 
-
-async def set_kuki(chat_id: int):
-    kukichat = await is_kuki(chat_id)
-    if kukichat:
-        return
-    return await kukidb.insert_one({"chat_id": chat_id})
-
-
-async def rm_kuki(chat_id: int):
-    kukichat = await is_kuki(chat_id)
-    if not kukichat:
-        return
-    return await kukidb.delete_one({"chat_id": chat_id})
+def is_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
+    if not ai:
+        return False
+    else:
+        return stark
 
 
 
@@ -54,7 +58,7 @@ BOT_ID = 2025517298
 )
 async def addchat(_, message):
     chatk = message.chat.id
-    is_kuki = is_kuki(chatk)
+    is_kuki = sql.is_kuki(chatk)
     if not is_kuki:
         set_kuki(chatk)
         m.reply_text(
@@ -67,7 +71,7 @@ async def addchat(_, message):
 )
 async def rmchat(_, message):
     chatk = message.chat.id
-    is_kuki = is_kuki(chatk)
+    is_kuki = sql.is_kuki(chatk)
     if not is_kuki:
         rm_kuki(chatk)
         m.reply_text(
@@ -88,7 +92,8 @@ async def rmchat(_, message):
 async def kuki(_, message):
     try:
         chatk = message.chat.id
-        if not await is_kuki(chatk):
+        is_kuki = is_kuki(chatk)
+        if not is_kuki:
             return
         if not message.reply_to_message:
             return
