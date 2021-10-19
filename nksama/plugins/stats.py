@@ -20,7 +20,7 @@ def stats(_,message):
   
   grp = grps.find({})
   grps_ = []
-  for x in grps_:
+  for x in grp:
     grps_.append(x['chat_id'])
     
   total_ = len(grps_)
