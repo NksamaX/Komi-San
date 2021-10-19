@@ -8,9 +8,9 @@ col = users_db['USER']
 
 @bot.on_message(filters.command("start"))
 def update_stats(_,message):
-  users = users_db.find({})
+  users = col.find({})
   mfs = []
-  for x in col:
+  for x in users:
     mfs.append(x['user_id'])
   if message.from_user.id not in mfs:
     user = {"type": "user" , "user_id": message.from_user.id}
