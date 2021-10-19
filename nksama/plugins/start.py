@@ -2,6 +2,7 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from nksama import bot
 from pyrogram import filters 
+from nksama.plugins.stats import col
 from nksama import help_message
 
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
