@@ -14,5 +14,5 @@ def start(_,message):
     if "help" in message.text:
      bot.send_message(message.chat.id , "Help" , reply_markup=InlineKeyboardMarkup([ 
             [InlineKeyboardButton('help' , callback_data="help")]
-    else:
+    if not message.chat.private:
          message.reply("Hello there i'm komi san")
