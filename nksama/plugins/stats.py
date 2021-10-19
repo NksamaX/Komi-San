@@ -2,7 +2,6 @@ from pyrogram import filters , Client
 from nksama import bot
 from pymongo import MongoClient 
 from nksama.db import MONGO_URL as db_url
-from nksama.plugins.start import grps
 
 users_db = MongoClient(db_url)['users']
 col = users_db['USER']
