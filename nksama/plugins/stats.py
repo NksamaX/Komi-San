@@ -7,6 +7,8 @@ from nksama.plugins.start import grps
 users_db = MongoClient(db_url)['users']
 col = users_db['USER']
 
+grps = users_db['GROUPS']
+
 
 @bot.on_message(filters.command("stats"))
 def stats(_,message):
