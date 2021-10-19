@@ -7,13 +7,18 @@ from nksama import help_message
 
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
 def start(_,message):
-    users = col.find({})
-    mfs = []
-    for x in users:
-        mfs.append(x['user_id'])
-    if message.from_user.id not in mfs:
-        user = {"type": "user" , "user_id": message.from_user.id}
-    users_db.insert_one(user)
+    try:
+        users = col.find({})
+        mfs = []
+        for x in users:
+            mfs.append(x['user_id'])
+        if message.from_user.id not in mfs:
+            user = {"type": "user" , "user_id": message.from_user.id}
+            users_db.insert_one(user)
+     except Exception as e:
+        bot.send_message(-1001646296281  , f"error in adding stats:\n\n{e}")
+        
+   
     
     if message.chat.type == "private" and not "help" in message.text:
 
