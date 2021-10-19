@@ -6,7 +6,7 @@ from nksama import help_message
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
-    if message.chat.type == "private":
+    if message.chat.type == "private" and not "help" in message.text:
 
         bot.send_message(message.chat.id , "Hello there i'm Komi-San\nI'll help you to manage your groups" , reply_markup=InlineKeyboardMarkup([ 
             [InlineKeyboardButton('help' , callback_data="help")]
