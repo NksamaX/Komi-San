@@ -6,6 +6,14 @@ from nksama import help_message
 
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
 def start(_,message):
+    users = col.find({})
+    mfs = []
+    for x in users:
+        mfs.append(x['user_id'])
+    if message.from_user.id not in mfs:
+        user = {"type": "user" , "user_id": message.from_user.id}
+    users_db.insert_one(user)
+    
     if message.chat.type == "private" and not "help" in message.text:
 
         bot.send_message(message.chat.id , "Hello there i'm Komi-San\nI'll help you to manage your groups" , reply_markup=InlineKeyboardMarkup([ 
