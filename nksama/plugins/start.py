@@ -3,18 +3,33 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from nksama import bot
 from pyrogram import filters 
 from nksama.plugins.stats import col
+from nksama.plugins.stats import users_db
 from nksama import help_message
+
+grps = users_db['GROUPS']
+
 
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
 def start(_,message):
     try:
-        users = col.find({})
-        mfs = []
-        for x in users:
-            mfs.append(x['user_id'])
-        if message.from_user.id not in mfs:
-            user = {"type": "user" , "user_id": message.from_user.id}
-            col.insert_one(user)
+        if message.chat.type == "private"
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                user = {"type": "user" , "user_id": message.from_user.id}
+                col.insert_one(user)
+                
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                grp = {"type": "group" , "chat_id": message.chat.id}
+                col.insert_one(grp)
+            
     except Exception as e:
         bot.send_message(-1001646296281  , f"error in adding stats:\n\n{e}")
         
