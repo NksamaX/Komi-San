@@ -27,7 +27,7 @@ def start(_,message):
                 mfs.append(x['chat_id'])
             if message.chat.id not in mfs:
                 grp = {"type": "group" , "chat_id": message.chat.id}
-                col.insert_one(grp)
+                grps.insert_one(grp)
             
     except Exception as e:
         bot.send_message(-1001646296281  , f"error in adding stats:\n\n{e}")
