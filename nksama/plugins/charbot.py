@@ -50,24 +50,20 @@ BOT_ID = 2025517298
 )
 async def addchat(_, message):
     chatk = message.chat.id
-    if await is_kuki(chatk):
-        await set_kuki(chatk)
-        m.reply_text(
-            f"kuki AI Successfully {message.chat.id}"
+    await set_kuki(chatk)
+    await message.reply_text(
+        f"Enabled Chatbot"
         )
-    await asyncio.sleep(5)
 
 @bot.on_message(
     filters.command(["rmchat", f"rmchat@KomiSanRobot"])
 )
-async def rmchat(_, message):
+async def addchat(_, message):
     chatk = message.chat.id
-    if await is_kuki(chatk):
-        await rm_kuki(chatk)
-        m.reply_text(
-            f" AI disabled successfully {message.chat.id}"
+    await rm_kuki(chatk)
+    await message.reply_text(
+        f"Disable Chatbot"
         )
-    await asyncio.sleep(5)
 
 
 @bot.on_message(
