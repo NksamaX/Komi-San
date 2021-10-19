@@ -9,7 +9,7 @@ col = users_db['USER']
 grps = users_db['GROUPS']
 
 
-@bot.on_message(filters.command("stats") filters.group & ~filters.private)
+@bot.on_message(filters.command("stats"))
 def stats(_,message):
   users = col.find({})
   mfs = []
