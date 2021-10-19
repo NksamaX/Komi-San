@@ -16,12 +16,9 @@ MONGO_URL = os.environ.get('MONGO_URL')
 
 MONGO_DB =  'CHATBOT'
 mongodb = MongoClient(MONGO_URL)["CHATBOT"]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_URL)
-db = motor[MONGO_DB]
 
-engine = AIOEngine(motor, MONGO_DB)
 
-kukidb = db.kuki
+kukidb = mongodb['CHATS']
 
 
 async def is_kuki(chat_id: int) -> bool:
