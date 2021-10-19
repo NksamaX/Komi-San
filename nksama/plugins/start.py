@@ -3,10 +3,9 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from nksama import bot
 from pyrogram import filters 
 from nksama.plugins.stats import col
-from nksama.plugins.stats import users_db
+from nksama.plugins.stats import users_db , grps
 from nksama import help_message
 
-grps = users_db['GROUPS']
 
 
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
