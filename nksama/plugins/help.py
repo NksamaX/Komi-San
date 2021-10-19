@@ -7,7 +7,7 @@ from typing import List , Any
 
 
 
-@bot.on_message(filters.command('help'))
+@bot.on_message(filters.command('help') | filters.command('help@KomiSanRobot'))
 def bothelp(_,message):
     if message.chat.type == "private":
         keyboard = []
@@ -18,10 +18,8 @@ def bothelp(_,message):
         bot.send_message(message.chat.id , "Commands and help" , reply_markup=InlineKeyboardMarkup(keyboard))
 
     else:
-        bot.send_message(message.chat.id , "Help" , reply_markup=InlineKeyboardMarkup(
+        bot.send_photo(message.chat.id , "https://telegra.ph/file/769474503795f6d4f406c.jpg" ,  caption="help" , reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("Help"  , url="t.me/komisanrobot?start=help")]
             
-            ]
-                        
-         ))
+            ]))
