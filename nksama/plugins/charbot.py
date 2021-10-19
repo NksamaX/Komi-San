@@ -21,11 +21,11 @@ db = motor[MONGO_DB]
 
 engine = AIOEngine(motor, MONGO_DB)
 
-kuki = db.kuki
+kukidb = db.kuki
 
 
 async def is_kuki(chat_id: int) -> bool:
-    ai = await kuki.find_one({"chat_id": chat_id})
+    ai = await kukidb.find_one({"chat_id": chat_id})
     if not ai:
         return False
     return True
@@ -35,14 +35,14 @@ async def set_kuki(chat_id: int):
     kukichat = await is_kuki(chat_id)
     if kukichat:
         return
-    return await kuki.insert_one({"chat_id": chat_id})
+    return await kukidb.insert_one({"chat_id": chat_id})
 
 
 async def rm_kuki(chat_id: int):
     kukichat = await is_kuki(chat_id)
     if not kukichat:
         return
-    return await kuki.delete_one({"chat_id": chat_id})
+    return await kukidb.delete_one({"chat_id": chat_id})
 
 
 
