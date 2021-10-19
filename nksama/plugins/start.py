@@ -24,8 +24,8 @@ def start(_,message):
             users = grps.find({})
             mfs = []
             for x in users:
-                mfs.append(x['user_id'])
-            if message.from_user.id not in mfs:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
                 grp = {"type": "group" , "chat_id": message.chat.id}
                 col.insert_one(grp)
             
