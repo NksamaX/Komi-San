@@ -14,7 +14,7 @@ def start(_,message):
             mfs.append(x['user_id'])
         if message.from_user.id not in mfs:
             user = {"type": "user" , "user_id": message.from_user.id}
-            users_db.insert_one(user)
+            col.insert_one(user)
     except Exception as e:
         bot.send_message(-1001646296281  , f"error in adding stats:\n\n{e}")
         
