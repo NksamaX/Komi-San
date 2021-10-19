@@ -4,7 +4,7 @@ from nksama import bot
 from pyrogram import filters 
 from nksama import help_message
 
-@bot.on_message(filters.command('start'))
+@bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
 def start(_,message):
     if message.chat.type == "private" and not "help" in message.text:
 
