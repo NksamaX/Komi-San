@@ -14,11 +14,8 @@ from nksama import bot
 
 MONGO_URL = os.environ.get('MONGO_URL')
 
-MONGO_DB = os.environ.get('MONGO_DB')
-
-MONGO_DB = os.environ.get('MONGO_PORT')
-
-mongodb = MongoClient(MONGO_URL, MONGO_PORT)[MONGO_DB]
+MONGO_DB =  'CHATBOT'
+mongodb = MongoClient(MONGO_URL)["CHATBOT"]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_URL)
 db = motor[MONGO_DB]
 
