@@ -11,8 +11,8 @@ def start(_,message):
         bot.send_message(message.chat.id , "Hello there i'm Komi-San\nI'll help you to manage your groups" , reply_markup=InlineKeyboardMarkup([ 
             [InlineKeyboardButton('help' , callback_data="help")]
         ]))
-   elif "help" in message.text:
+    if "help" in message.text:
      bot.send_message(message.chat.id , "Help" , reply_markup=InlineKeyboardMarkup([ 
             [InlineKeyboardButton('help' , callback_data="help")]
-   else:
+    else:
          message.reply("Hello there i'm komi san")
