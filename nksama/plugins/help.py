@@ -9,9 +9,19 @@ from typing import List , Any
 
 @bot.on_message(filters.command('help'))
 def bothelp(_,message):
-    keyboard = []
-    for x in help_message:
-        keyboard.append([InlineKeyboardButton(f"{x['Module_Name']}" , callback_data=f"help:{x['Module_Name']}")])
-        
+    if message.chat.private:
+        keyboard = []
+        for x in help_message:
+            keyboard.append([InlineKeyboardButton(f"{x['Module_Name']}" , callback_data=f"help:{x['Module_Name']}")])
 
-    bot.send_message(message.chat.id , "Commands and help" , reply_markup=InlineKeyboardMarkup(keyboard))
+
+        bot.send_message(message.chat.id , "Commands and help" , reply_markup=InlineKeyboardMarkup(keyboard))
+
+    else:
+        bot.send_message(message.chat.id , "Help" , reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("Help"  , url="t.me/komisanrobot?start=help")]
+            
+            ]
+                        
+         ))
