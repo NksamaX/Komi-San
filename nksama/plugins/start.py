@@ -12,7 +12,7 @@ grps = users_db['GROUPS']
 @bot.on_message(filters.command('start') | filters.command('start@KomiSanRobot'))
 def start(_,message):
     try:
-        if message.chat.type == "private"
+        if message.chat.type == "private":
             users = col.find({})
             mfs = []
             for x in users:
