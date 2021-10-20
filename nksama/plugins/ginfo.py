@@ -19,5 +19,5 @@ def ginfo(client, message):
         message += f"<b>Pinned Message:</b> {bot.get_dialogs(chat_id, pinned_only=True)}"
     except TelegramError as e:
         return 
-    message += f"<b>Chat Admins:</b> {app.get_chat_members(chat_id, filter="administrators")}"
+    message += f"<b>Chat Admins:</b> {bot.get_chat_members(chat_id, filter="administrators")}"
     message.reply_text(message)
