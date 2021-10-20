@@ -20,4 +20,4 @@ def ginfo(client, message):
     except TelegramError as e:
         return 
     message += f"<b>Chat Admins:</b> {app.get_chat_members(chat_id, filter="administrators")}"
-    
+    message.reply_text(message)
