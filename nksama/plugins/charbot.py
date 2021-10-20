@@ -19,7 +19,7 @@ mongodb = MongoClient(MONGO_URL)["CHATBOT"]
 
 
 
-kuki = db["KUKIBOT"]
+kuki = mongodb["KUKIBOT"]
 
 
 def set_kuki(chat_id):
