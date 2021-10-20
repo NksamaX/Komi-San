@@ -18,7 +18,7 @@ MONGO_DB =  'CHATBOT'
 mongodb = MongoClient(MONGO_URL)["CHATBOT"]
 
 
-kukidb = mongodb['CHATS']
+kukidb = db.kuki
 
 
 async def is_kuki(chat_id: int) -> bool:
