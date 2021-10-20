@@ -49,8 +49,7 @@ BOT_ID = 2025517298
     filters.command(["addchat", f"addchat@KomiSanRobot"])
 )
 async def addchat(_, message):
-    chatk = message.chat.id
-    await set_kuki(chatk)
+    await set_kuki(message.chat.id)
     await message.reply_text(
         f"Enabled Chatbot"
         )
@@ -59,8 +58,7 @@ async def addchat(_, message):
     filters.command(["rmchat", f"rmchat@KomiSanRobot"])
 )
 async def addchat(_, message):
-    chatk = message.chat.id
-    await rm_kuki(chatk)
+    await rm_kuki(message.chat.id)
     await message.reply_text(
         f"Disable Chatbot"
         )
@@ -77,8 +75,7 @@ async def addchat(_, message):
 )
 async def kuki(_, message):
     try:
-        chatk = message.chat.id
-        if not await is_kuki(chatk):
+        if not await is_kuki_on(message.chat.id):
             return
         if not message.reply_to_message:
             return
