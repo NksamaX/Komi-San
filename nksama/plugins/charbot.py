@@ -18,28 +18,33 @@ MONGO_DB =  'CHATBOT'
 mongodb = MongoClient(MONGO_URL)["CHATBOT"]
 
 
-kukidb = mongodb.kuki
+
+kuki = db["KUKIBOT"]
 
 
-async def is_kuki(chat_id: int) -> bool:
-    ai = await kukidb.find_one({"chat_id": chat_id})
+def set_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
+    if ai:
+        return False
+    else:
+        kuki.insert_one({"chat_id": chat_id})
+        return True
+
+
+def rm_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
     if not ai:
         return False
-    return True
+    else:
+        kuki.delete_one({"chat_id": chat_id})
+        return True
 
-
-async def set_kuki(chat_id: int):
-    kukichat = await is_kuki(chat_id)
-    if kukichat:
-        return
-    return await kukidb.insert_one({"chat_id": chat_id})
-
-
-async def rm_kuki(chat_id: int):
-    kukichat = await is_kuki(chat_id)
-    if not kukichat:
-        return
-    return await kukidb.delete_one({"chat_id": chat_id})
+def is_kuki(chat_id):
+    ai = kuki.find_one({"chat_id": chat_id})
+    if not ai:
+        return False
+    else:
+        return stark
 
 
 
@@ -49,19 +54,27 @@ BOT_ID = 2025517298
     filters.command(["addchat", f"addchat@KomiSanRobot"])
 )
 async def addchat(_, message):
-    await set_kuki(message.chat.id)
-    await message.reply_text(
-        f"Enabled Chatbot"
+    chatk = message.chat.id
+    fuck = is_kuki(chatk)
+    if not fuck:
+        set_kuki(chatk)
+        m.reply_text(
+            f"kuki AI Successfully {message.chat.id}"
         )
+    await asyncio.sleep(5)
 
 @bot.on_message(
     filters.command(["rmchat", f"rmchat@KomiSanRobot"])
 )
-async def addchat(_, message):
-    await rm_kuki(message.chat.id)
-    await message.reply_text(
-        f"Disable Chatbot"
+async def rmchat(_, message):
+    chatk = message.chat.id
+    fuck = is_kuki(chatk)
+    if not fuck:
+        rm_kuki(chatk)
+        m.reply_text(
+            f" AI disabled successfully {message.chat.id}"
         )
+    await asyncio.sleep(5)
 
 
 @bot.on_message(
@@ -75,7 +88,9 @@ async def addchat(_, message):
 )
 async def kuki(_, message):
     try:
-        if not await is_kuki_on(message.chat.id):
+        chatk = message.chat.id
+        fuck = is_kuki(chatk)
+        if not fuck:
             return
         if not message.reply_to_message:
             return
@@ -94,4 +109,3 @@ async def kuki(_, message):
         await message.reply_text(nksamax)
     
     except Exception as e:
-        await bot.send_message(-1001646296281 , f"error in chatbot:\n\n{e}")
