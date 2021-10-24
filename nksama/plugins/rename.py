@@ -1,7 +1,7 @@
 from nksama import bot
 import os
 from nksama.utils.sendlog import send_log
-
+from pyrogram import filters
 
 @bot.on_message(filters.command('rename'))
 def rename(_,message):
