@@ -22,8 +22,8 @@ def bothelp(_,message):
         bot.send_message(message.chat.id , HELPP_TEXT , reply_markup=InlineKeyboardMarkup(keyboard))
 
     else:
-        bot.send_photo(message.chat.id , "https://telegra.ph/file/769474503795f6d4f406c.jpg" ,  caption="help" , reply_markup=InlineKeyboardMarkup(
+        bot.send_photo(message.chat.id , "https://telegra.ph/file/769474503795f6d4f406c.jpg" ,  caption=HELPP_TEXT , reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(HELPP_TEXT  , url="t.me/komisanrobot?start=help")]
+                [InlineKeyboardButton("Help"  , url="t.me/komisanrobot?start=help")]
             
             ]))
