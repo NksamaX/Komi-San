@@ -24,6 +24,6 @@ def bothelp(_,message):
     else:
         bot.send_photo(message.chat.id , "https://telegra.ph/file/769474503795f6d4f406c.jpg" ,  caption=HELPP_TEXT , reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("Help"  , url="t.me/komisanrobot?start=help")]
+                [InlineKeyboardButton("Pm me for more details"  , url="t.me/komisanrobot?start=help")]
             
             ]))
