@@ -1,5 +1,5 @@
 import requests
-from PIL import Image
+import Image
 from nksama import bot
 import os
 from pyrogram import filters
