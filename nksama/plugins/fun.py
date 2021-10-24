@@ -128,5 +128,4 @@ async def run(client, message):
 @bot.on_message(filters.command('eye')) 
 async def eye(client, message):
     await message.reply_text(choice(EYES))
-    return
 
