@@ -4,6 +4,7 @@ from pyrogram import filters
 import json
 from nksama import help_message
 from nksama.plugins.admin import is_admin
+from nksama.utlis.sendlog import send_log
 
 @bot.on_message(filters.command('addnote'))
 def addnote(_,message):
@@ -32,7 +33,7 @@ def get_note(_,message):
         
         
     except Exception as e:
-        message.reply(e)
+        send_log(e , "notes")
         
    
 @bot.on_message(filters.regex(r"^#.+"))
@@ -43,7 +44,7 @@ def gettnote(_,message):
         message.reply(data['text'])
     
     except Exception as e:
-        message.reply(e)
+        send_log(e , "notes")
         
     
 
