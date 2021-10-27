@@ -3,7 +3,7 @@ from nksama import bot
 from pyrogram import filters
 from nksama.plugins.admin import is_admin
 
-profanity_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
+profanity_db = pymongo.MongoClient(db_url)['AntiProfanity']
 
 @bot.on_message(filters.command("setprofanity"))
 def toggle_profanity(_, message):
