@@ -4,7 +4,7 @@ from pyrogram import filters
 import json
 from nksama import help_message
 from nksama.plugins.admin import is_admin
-from nksama.utlis.sendlog import send_log
+from nksama.utils.sendlog import send_log
 
 @bot.on_message(filters.command('addnote'))
 def addnote(_,message):
