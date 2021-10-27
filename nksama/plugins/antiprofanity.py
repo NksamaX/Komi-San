@@ -14,20 +14,25 @@ def toggle_profanity(_, message):
     profanity_mode = y[1].lower
     if is_admin(chat_id , user_id):
         is_profanity = profanity_db.find_one({"chat_id": chat_id})
+
         if profanity_mode=="on":
             if is_profanity:
                 return message.reply_text("Anti Profanity is already ON for this Chat")
+
             else:
                 profanity_db.insert_one({"chat_id": chat_id})
                 message.reply_text("Anti Profanity Turned on for this chat")
+
         elif profanity_mode=="off":
        	    if is_profanity:
                 profanity_db.delete_one({"chat_id": chat_id})
                 message.reply_text("Kay, Turned off Anti Profanity for This Chat")
             else:
                 message.reply_text("Anti-Profanity is Already off For this Chat")    
+
     	else:
             message.reply_text("I accept on or off only")
+
     else:
         message.reply_text("You need to be Admin to execute this Command")
 
