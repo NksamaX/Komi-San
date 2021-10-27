@@ -18,7 +18,6 @@ def toggle_profanity(_, message):
         if profanity_mode=="on":
             if is_profanity:
                 return message.reply_text("Anti Profanity is already ON for this Chat")
-
             else:
                 profanity_db.insert_one({"chat_id": chat_id})
                 message.reply_text("Anti Profanity Turned on for this chat")
@@ -29,7 +28,6 @@ def toggle_profanity(_, message):
                 message.reply_text("Kay, Turned off Anti Profanity for This Chat")
             else:
                 message.reply_text("Anti-Profanity is Already off For this Chat")    
-
     	else:
             message.reply_text("I accept on or off only")
 
