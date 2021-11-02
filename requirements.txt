@@ -11,3 +11,5 @@ redis
 pytgcalls==3.0.0.dev19
 telegraph
 odmantic
+googletrans==4.0.0rc1
+gTTS
