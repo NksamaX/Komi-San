@@ -1,16 +1,19 @@
-from pyrogram import filters , Client
+import os
+import asyncio
+
+from pyrogram import filters
+from pyrogram.types import Message
+from pymongo import MongoClient
 from nksama import bot
-from pymongo import MongoClient 
 from nksama.db import MONGO_URL as db_url
 
 users_db = MongoClient(db_url)['users']
 col = users_db['USER']
-
 grps = users_db['GROUPS']
 
 
 @bot.on_message(filters.command("stats"))
-def stats(_,message):
+async def stats(_, m: Message):
   users = col.find({})
   mfs = []
   for x in users:
@@ -25,7 +28,6 @@ def stats(_,message):
     
   total_ = len(grps_)
   
-  bot.send_message(message.chat.id , f"Total Users: {total}\nTotal Groups: {total_}")
-  
+  await m.reply_text(f"👥 Total Users: `{total}`\n💭 Total Groups: `{total_}`")
 
 
