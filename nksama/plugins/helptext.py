@@ -34,6 +34,6 @@ class Help_Text:
 • /clearwelcome - __clear welcome message__""",
         
     "fun_help": """•/eye
-•/run"""
+•/run""",
      
      "telegraph_help": "• /ul - __Reply to a photo or video__"
