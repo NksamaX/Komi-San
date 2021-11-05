@@ -37,3 +37,6 @@ class Help_Text:
 •/run""",
      
      "telegraph_help" : """• /ul - __Reply to a photo or video__""",
+        
+        
+    }
