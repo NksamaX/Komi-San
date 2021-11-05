@@ -36,4 +36,4 @@ class Help_Text:
     "fun_help": """•/eye
 •/run""",
      
-     "telegraph_help": "• /ul - __Reply to a photo or video__"
+     "telegraph_help" : """• /ul - __Reply to a photo or video__"""
