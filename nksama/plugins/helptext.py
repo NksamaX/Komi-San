@@ -2,8 +2,11 @@ from nksama import help_message
 
 help_message.append(
 {"Module_Name": "fun"},
-{"Module_Name": "telegraph"}
+
 )
+
+
+help_message.append({"Module_Name": "telegraph"})
 
 class Help_Text:
     helpp = {
