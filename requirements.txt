@@ -11,3 +11,4 @@ redis
 pytgcalls==3.0.0.dev19
 telegraph
 odmantic
+tracemoepy
