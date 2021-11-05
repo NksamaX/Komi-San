@@ -1,4 +1,9 @@
+from nksama import help_message
 
+help_message.append(
+{"Module_Name": "fun"},
+{"Module_Name": "telegraph"}
+)
 
 class Help_Text:
     helpp = {
@@ -21,10 +26,14 @@ class Help_Text:
 • /quote - __to get random anime quotes__
 • /pat - __ to pat someone__
 • /invitelink - __get invitelink of the current chat__
+• /whatanime - __reply to a gif or video__
+• /wall your query - __wallpapers__ 
 """,
         
     "welcome_help" : """• /setwelcome __welcome message - text for welcome__
 • /clearwelcome - __clear welcome message__""",
-
-    
-    }
+        
+    "fun_help": """•/eye
+•/run}
+     
+     "telegraph_help": "• /ul - __Reply to a photo or video__
