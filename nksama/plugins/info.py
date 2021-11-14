@@ -7,7 +7,7 @@ OWNER = 825664681
 @bot.on_message(filters.command("info"))
 def info(_,message):
   if len(message.text.split(" ")) < 2:
-    user = message.text.split(" ")[1]
+    user = message.text.replace("/info " , "")
     
   else:
     user = message.from_user.id
