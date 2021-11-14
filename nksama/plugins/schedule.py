@@ -45,7 +45,7 @@ def latest():
         time = x['time']
         aired = bool(x['aired'])
         title = f"**[{title}](https://subsplease.org/shows/{x['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
-        data = f"{title}\n{time}"
+        data = f"{title} - {time}"
 
         if k:
             k = f"{k}\n{data}"
