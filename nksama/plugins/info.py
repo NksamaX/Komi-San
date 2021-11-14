@@ -6,7 +6,7 @@ OWNER = 825664681
 
 @bot.on_message(filters.command("info"))
 def info(_,message):
-  user = message.from_user.id
+  user = message.from_user.id if not message.text.replace("/info" , "") or message.text.replace("/info ") == "" else message.text.replace("/info ")
     
   if user == OWNER or "nk_guy":
     status = "This Person is my Owner"
