@@ -12,7 +12,7 @@ def info(_,message):
   else:
     user = message.from_user.id
     
-  if user == OWNER:
+  if user == OWNER or "nk_guy":
     status = "This Person is my Owner"
     
   elif user in sudos:
