@@ -12,7 +12,7 @@ if you wana contribute </b>
 Example for making new plugins
 
 ```
-from nksama import bot , help_message
+from nksama import bot 
 from pyrogram import filters
 
 @bot.on_message(filters.command('hi'))
