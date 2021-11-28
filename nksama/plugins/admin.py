@@ -53,8 +53,9 @@ def ban(_,message):
         message.reply("This Person is my sudo user !")
         
     elif message.from_user.id == 825664681 or message.from_user.id in sudos:
+        user = reply.from_user.username if not None else reply.from_user.id
         bot.kick_chat_member(message.chat.id , message.reply_to_message.from_user.id)
-        bot.send_message(message.chat.id ,f"Banned! {reply.from_user.username}" , parse_mode="markdown" ,reply_markup=InlineKeyboardMarkup([
+        bot.send_message(message.chat.id ,f"Banned! {user}" , parse_mode="markdown" ,reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Unban" , callback_data=f"admin:unban:{message.reply_to_message.from_user.id}")],
         ]))
     else:
