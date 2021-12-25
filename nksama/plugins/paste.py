@@ -1,6 +1,7 @@
 from requests import post , get
 from nksama import bot
-from pyrogram import filters , InlineKeyboardMarkup , InlineKeyboardButton
+from pyrogram import filters 
+from pyrogram.types import InlineKeyboardMarkup , InlineKeyboardButton
 
 
 def paste(text):
