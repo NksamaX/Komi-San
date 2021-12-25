@@ -31,6 +31,8 @@ class Help_Text:
 • /invitelink - __get invitelink of the current chat__
 • /whatanime - __reply to a gif or video__
 • /wall your query - __wallpapers__ 
+• /paste - __reply to a message__
+
 """,
         
     "welcome_help" : """• /setwelcome __welcome message - text for welcome__
