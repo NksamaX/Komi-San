@@ -133,6 +133,22 @@ def demote(_,message):
     if is_admin(message.chat.id , message.from_user.id) and message.reply_to_message:
         message.chat.promote_member(message.reply_to_message.from_user.id, False,False,False,False,False,False,False,False)
         message.reply('Demoted @{} !'.format(message.reply_to_message.from_user.username))
-     
+ 
+@bot.on_message(filters.command("cban") & filters.group)
+def bam(_,message):
+    user = message.reply_to_message
+    admeme = bot.get_users(message.from_user.id)
+    if admeme.status == "creator" or "administrator" and user.sender_chat:
+        bot.kick_chat_member(message.chat.id , user.sender_chat.id)
+        message.reply_text("Banned {}".format(user.id)) 
+        
+        
+@bot.on_message(filters.command("cunban") & filters.group)
+def bam(_,message):
+    user = message.reply_to_message
+    admeme = bot.get_users(message.from_user.id)
+    if admeme.status == "creator" or "administrator" and user.sender_chat:
+        bot.unban_chat_member(message.chat.id , user.sender_chat.id)
+        message.reply_text("UNBanned {}".format(user.id)) 
      
 help_message.append({'Module_Name': 'admin'})
