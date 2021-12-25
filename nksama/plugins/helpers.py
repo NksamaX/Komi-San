@@ -57,7 +57,10 @@ def callback_help(_,query):
         keyboard = []
         for x in help_message:
             keyboard.append([InlineKeyboardButton(x['Module_Name'], callback_data=f"help:{x['Module_Name']}")])
-        query.message.edit(HELPP_TEXT , reply_markup=InlineKeyboardMarkup(keyboard))
+        try:
+            query.message.edit(HELPP_TEXT , reply_markup=InlineKeyboardMarkup(keyboard))
+        except:
+            pass
             
 
 
