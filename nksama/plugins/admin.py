@@ -136,11 +136,16 @@ def demote(_,message):
  
 @bot.on_message(filters.command("cban") & filters.group)
 def bam(_,message):
-    user = message.reply_to_message
-    admeme = bot.get_users(message.from_user.id)
-    if admeme.status == "creator" or "administrator" and user.sender_chat:
-        bot.kick_chat_member(message.chat.id , user.sender_chat.id)
-        message.reply_text("Banned {}".format(user.sender_chat.id)) 
+    try:
+        user = message.reply_to_message
+        admeme = bot.get_users(message.from_user.id)
+        if admeme.status == "creator" or "administrator" and user.sender_chat:
+            bot.kick_chat_member(message.chat.id , user.sender_chat.id)
+            message.reply_text("Banned {}".format(user.sender_chat.id)) 
+    
+    except Exception as e:
+        from nksama.utils.sendlog import send_log
+        send_log(e , "cban")
         
         
 @bot.on_message(filters.command("cunban") & filters.group)
