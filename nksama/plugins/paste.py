@@ -1,5 +1,6 @@
 from requests import post , get
 from nksama import bot
+from pyrogram import filters
 
 
 def paste(text):
