@@ -1,9 +1,13 @@
 import io
+from re import sub
 import sys
 import traceback
 from nksama import bot as app
 from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
 from pyrogram.errors import RPCError
+import subprocess
+from nksama.plugins.paste import paste
 import speedtest
 from nksama.plugins.admin import is_admin as admin
 
@@ -99,4 +103,9 @@ async def invitelink(client, message):
         
     except Exception as e:
         pass
+
+@app.on_message(filters.command("logs") & filters.user(owner))
+def semdlog(_,message):
+    x = subprocess.getoutput("tail log.txt")
+    message.reply_text(paste(x) , reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Open" , url=paste(x))]]))
 
