@@ -107,5 +107,18 @@ async def invitelink(client, message):
 @app.on_message(filters.command("logs") & filters.user(owner))
 def semdlog(_,message):
     x = subprocess.getoutput("tail log.txt")
-    message.reply_text(paste(x) , reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Open" , url=paste(x))]]))
+    message.reply_text(paste(x) , reply_markup=InlineKeyboardMarkup([
+    [
+        InlineKeyboardButton("Open" , url=paste(x)) , InlineKeyboardButton("Send" , callback_data="send")
+
+    ]
+
+    ]))
+    
+    
+@app.on_callback_query(filters.regex("send"))
+async def semdd(_,query):
+   await query.message.delete()
+   await bot.send_document(query.message.chat.id , "log.txt")
+   
 
