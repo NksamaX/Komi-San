@@ -118,7 +118,7 @@ def semdlog(_,message):
     
 @app.on_callback_query(filters.regex("send"))
 async def semdd(_,query):
-   await query.message.delete()
+   await query.message.edit("**Sent Logs as file**")
    await app.send_document(query.message.chat.id , "log.txt")
    
 
