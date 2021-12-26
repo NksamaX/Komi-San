@@ -4,9 +4,11 @@ from pyrogram import filters
 from nksama import bot
 import os
 
+try:
 
-
-WALL_API_KEY = os.environ['WALL_API_KEY']
+    WALL_API_KEY = os.environ['WALL_API_KEY']
+except:
+    WALL_API_KEY = None
 
 
 
