@@ -1,6 +1,10 @@
 from pyrogram import filters, Client
 from redis import Redis
 import os
+from nksama.plugins.help import Help_Text
+
+
+help = Help_Text().helpp
 
 
 help_message = []
@@ -15,7 +19,9 @@ class bot(Client):
   )
   
   def add_cmd(module , help):
-    help_message.append({"Module_Name": module , f"{module}_help": help)
+    help_message.append({"Module_Name": module)
+    help.update({f"{module}_help": help})
+                         
 
     
 PYRO_SESSION = os.environ['PYRO_SESSION']
