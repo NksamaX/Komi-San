@@ -14,20 +14,18 @@ grps = users_db['GROUPS']
 
 @bot.on_message(filters.command("stats"))
 async def stats(_, m: Message):
-  users = col.find({})
-  mfs = []
-  for x in users:
-    mfs.append(x['user_id'])
-    
-  total = len(mfs)
-  
-  grp = grps.find({})
-  grps_ = []
-  for x in grp:
-    grps_.append(x['chat_id'])
-    
-  total_ = len(grps_)
-  
-  await m.reply_text(f"👥 Total Users: `{total}`\n💭 Total Groups: `{total_}`")
+    users = col.find({})
+    mfs = []
+    for x in users:
+        mfs.append(x['user_id'])
 
+    total = len(mfs)
 
+    grp = grps.find({})
+    grps_ = []
+    for x in grp:
+        grps_.append(x['chat_id'])
+
+    total_ = len(grps_)
+
+    await m.reply_text(f"👥 Total Users: `{total}`\n💭 Total Groups: `{total_}`")

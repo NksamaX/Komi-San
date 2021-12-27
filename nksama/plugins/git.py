@@ -5,7 +5,7 @@ from nksama import bot
 
 
 @bot.on_message(filters.command('github'))
-def git(_,message):
+def git(_, message):
     user = message.text.split(' ')[1]
     res = get(f'https://api.github.com/users/{user}').json()
     data = f"""**Name**: {res['name']}
@@ -18,12 +18,9 @@ def git(_,message):
 **Followers**: {res['followers']}
 **Following**: {res['following']}
 """
-    with open(f"{user}.jpg" ,"wb") as f:
+    with open(f"{user}.jpg", "wb") as f:
         kek = get(res['avatar_url']).content
         f.write(kek)
 
-
-    message.reply_photo(f"{user}.jpg" , caption=data)
+    message.reply_photo(f"{user}.jpg", caption=data)
     os.remove(f"{user}.jpg")
-
-    

@@ -4,14 +4,12 @@ import sys
 import traceback
 from nksama import bot as app
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import RPCError
 import subprocess
 from nksama.plugins.paste import paste
 import speedtest
 from nksama.plugins.admin import is_admin as admin
-
-
 
 owner = 825664681
 
@@ -59,25 +57,22 @@ async def eval(client, message):
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
-            await reply_to_.reply_document(
-                document=out_file, caption=cmd, disable_notification=True
-            )
+            await reply_to_.reply_document(document=out_file,
+                                           caption=cmd,
+                                           disable_notification=True)
     else:
         await reply_to_.reply_text(final_output)
     await status_message.delete()
 
 
 async def aexec(code, client, message):
-    exec(
-        "async def __aexec(client, message): "
-        + "".join(f"\n {l_}" for l_ in code.split("\n"))
-    )
+    exec("async def __aexec(client, message): " +
+         "".join(f"\n {l_}" for l_ in code.split("\n")))
     return await locals()["__aexec"](client, message)
 
 
-
 @app.on_message(filters.command("speedtest") & filters.user(owner))
-def speedtest_(_,message):
+def speedtest_(_, message):
     speed = speedtest.Speedtest()
     speed.get_best_server()
     speed.download()
@@ -85,6 +80,7 @@ def speedtest_(_,message):
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image)
+
 
 @app.on_message(filters.command("leave") & filters.user(owner))
 async def leave(client, message):
@@ -94,31 +90,29 @@ async def leave(client, message):
     except RPCError as e:
         print(e)
 
+
 @app.on_message(filters.command("invitelink"))
 async def invitelink(client, message):
     chat_id = message.chat.id
     try:
         grouplink = await client.export_chat_invite_link(chat_id)
         await message.reply_text(f"{grouplink}")
-        
+
     except Exception as e:
         pass
 
+
 @app.on_message(filters.command("logs") & filters.user(owner))
-def semdlog(_,message):
+def semdlog(_, message):
     x = subprocess.getoutput("tail log.txt")
-    message.reply_text(paste(x) , reply_markup=InlineKeyboardMarkup([
-    [
-        InlineKeyboardButton("Open" , url=paste(x)) , InlineKeyboardButton("Send" , callback_data="send")
+    message.reply_text(paste(x),
+                       reply_markup=InlineKeyboardMarkup([[
+                           InlineKeyboardButton("Open", url=paste(x)),
+                           InlineKeyboardButton("Send", callback_data="send")
+                       ]]))
 
-    ]
 
-    ]))
-    
-    
 @app.on_callback_query(filters.regex("send"))
-async def semdd(_,query):
-   await query.message.edit("**Sent Logs as file**")
-   await app.send_document(query.message.chat.id , "log.txt")
-   
-
+async def semdd(_, query):
+    await query.message.edit("**Sent Logs as file**")
+    await app.send_document(query.message.chat.id, "log.txt")

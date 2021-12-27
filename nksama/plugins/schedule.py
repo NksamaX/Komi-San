@@ -14,32 +14,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 COPY WITH CREDIT
 """
 
-
-
-
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from requests import get
-import time , datetime
+import time, datetime
 
-from pyrogram import Client , filters
+from pyrogram import Client, filters
 from nksama import bot
 
 
-
-
 def call_back_in_filter(data):
-    return filters.create(
-        lambda flt, _, query: flt.data in query.data,
-        data=data
-    )
+    return filters.create(lambda flt, _, query: flt.data in query.data,
+                          data=data)
+
 
 def latest():
 
     url = 'https://subsplease.org/api/?f=schedule&h=true&tz=Japan'
     res = get(url).json()
 
-    k = None 
+    k = None
     for x in res['schedule']:
         title = x['title']
         time = x['time']
@@ -53,43 +47,32 @@ def latest():
         else:
             k = data
 
-
     return k
 
 
-
 @bot.on_message(filters.command('latest'))
-def lates(_,message):
+def lates(_, message):
     mm = latest()
-    message.reply_text(f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
-    [    
-        [InlineKeyboardButton("Refresh" , callback_data="fk")]
-
-    ]
-        
-    ))
+    message.reply_text(f"Today's Schedule:\nTZ: Japan\n{mm}",
+                       reply_markup=InlineKeyboardMarkup([[
+                           InlineKeyboardButton("Refresh", callback_data="fk")
+                       ]]))
 
 
 @bot.on_callback_query(call_back_in_filter("fk"))
-def callbackk(_,query):
+def callbackk(_, query):
 
     if query.data == "fk":
         mm = latest()
         time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
 
-
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: Japan\n{mm}", reply_markup=InlineKeyboardMarkup(
-        [    
-            [InlineKeyboardButton("Refresh" , callback_data="fk")]
-
-        ]
-            
-        ))
+            query.message.edit(f"Today\'s Schedule:\nTZ: Japan\n{mm}",
+                               reply_markup=InlineKeyboardMarkup([[
+                                   InlineKeyboardButton("Refresh",
+                                                        callback_data="fk")
+                               ]]))
             query.answer("Refreshed!")
-
 
         except:
             query.answer("Refreshed!")
-        
-
