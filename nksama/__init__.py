@@ -2,24 +2,22 @@ from pyrogram import filters, Client
 from redis import Redis
 import os
 
-bot = Client('bot',
-             api_id=os.environ.get('API_ID'),
-             api_hash=os.environ['API_HASH'],
-             bot_token=os.environ['BOT_TOKEN'],
-             plugins=dict(root=f"{__name__}/plugins"))
 
-# r = os.environ.get("REDIS_URL").split(":")
-# REDIS_PASSWORD = r[2]
-# REDIS_PORT = r[1]
+help_message = []
 
-# REDIS_DB = Redis(
-#     host=r[0],
-#     password=REDIS_PASSWORD,
-#     port=REDIS_PORT,
-#     decode_responses=True,
-# )
+class bot(Client):
+  super().__init__(
+    'bot',
+     api_id=os.environ.get('API_ID'),
+     api_hash=os.environ['API_HASH'],
+     bot_token=os.environ['BOT_TOKEN'],
+     plugins=dict(root=f"{__name__}/plugins")
+  )
+  
+  def add_cmd(module , help):
+    help_message.append({"Module_Name": module , f"{module}_help": help)
 
-# REDIS_DB.ping()
+    
 PYRO_SESSION = os.environ['PYRO_SESSION']
 
 musicbot = Client(
@@ -28,4 +26,3 @@ musicbot = Client(
     api_hash=os.environ['API_HASH'],
 )
 
-help_message = []
