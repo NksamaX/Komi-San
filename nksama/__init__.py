@@ -1,7 +1,7 @@
 from pyrogram import filters, Client
 from redis import Redis
 import os
-from nksama.plugins.help import Help_Text
+from nksama.plugins.helptext import Help_Text
 
 help = Help_Text().helpp
 
