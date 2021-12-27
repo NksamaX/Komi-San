@@ -44,4 +44,4 @@ def start(_,message):
             [InlineKeyboardButton('help' , callback_data="help")]
      ]))
     if not message.chat.type == "private":
-         message.reply("Hello there i'm komi san")
+         message.reply("Hello there i'm komi-san")
