@@ -11,7 +11,7 @@ logging.basicConfig(
 
 
 def main():
-    bot.run()
+    bot().run()
     musicbot.start()
     bot.send_message(-1001544622735, "I'm Now online")
 
