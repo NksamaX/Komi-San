@@ -19,7 +19,7 @@ class bot(Client):
   )
   
   def add_cmd(module , help):
-    help_message.append({"Module_Name": module)
+    help_message.append({"Module_Name": module})
     help.update({f"{module}_help" : help})
                          
 
