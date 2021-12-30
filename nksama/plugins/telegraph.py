@@ -13,5 +13,4 @@ def ul(_, message):
         for x in fk:
             url = "https://telegra.ph" + x
 
-        i.edit(f'Your telegraph [link]({url})',
-                           disable_web_page_preview=True)
+        i.edit(f'Your telegraph [link]({url})', disable_web_page_preview=True)
