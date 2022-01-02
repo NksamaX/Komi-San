@@ -37,8 +37,11 @@ def latest():
     for x in res['schedule']:
         title = x['title']
         time = x['time']
-        #         aired = bool(x['aired'])
-        title = f"**[{title}](https://subsplease.org/shows/{x['page']})**"  # if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
+        try:
+            aired = bool(x['aired'])
+            title = f"**[{title}](https://subsplease.org/shows/{x['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
+        except KeyError:
+            title = f"**[{title}](https://subsplease.org/shows/{x['page']})**"
         data = f"{title} - {time}"
 
         if k:
