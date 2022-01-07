@@ -44,7 +44,7 @@ def ban(_, message):
     reply = message.reply_to_message
     if is_admin(
             message.chat.id, message.from_user.id
-    ) and not reply.from_user.id in sudos and reply.from_user.id != 825664681:
+    ) and not reply.from_user.id in sudos or reply.from_user.id != 825664681:
         bot.kick_chat_member(message.chat.id,
                              message.reply_to_message.from_user.id)
         bot.send_message(
