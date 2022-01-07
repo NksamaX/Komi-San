@@ -45,7 +45,7 @@ def ban(_, message):
     if is_admin(
             message.chat.id, message.from_user.id
     ) and not reply.from_user.id in sudos and reply.from_user.id != 825664681:
-        message.chat.kick_member(message.reply_to_message.from_user.id)
+        message.chat.ban_member(message.reply_to_message.from_user.id)
         bot.send_message(
             message.chat.id,
             f"Banned! {reply.from_user.username}",
