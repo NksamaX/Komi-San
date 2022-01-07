@@ -7,6 +7,8 @@ OWNER = 825664681
 
 @bot.on_message(filters.command("info"))
 def info(_, message):
+    if message.text == "/info":
+        user = message.from_user.id
     if message.reply_to_message:
         user = message.reply_to_message.from_user.id
     if not message.reply_to_message and message.text != "/info" and user.isnumeric(
@@ -37,7 +39,7 @@ def info(_, message):
     data = f"""**First Name** : {foo.first_name}
 **Last Name**: {foo.last_name}
 **Telegram Id**: {foo.id}
-**PermaLink**: {foo.mention(message.from_user.first_name)}
+**PermaLink**: {foo.mention(foo.first_name)}
 **is_bot**: {foo.is_bot}
 **Status**: {status}
 """
