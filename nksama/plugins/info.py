@@ -15,7 +15,7 @@ def info(_, message):
 
     if not message.reply_to_message and message.text != "/info" and not user.isnumeric(
     ):
-        k = bot.get_users(user)
+        k = bot.get_users(message.text.split(" ")[1])
         user = k.id
 
     if user == OWNER:
