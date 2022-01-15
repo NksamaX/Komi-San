@@ -2,6 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from .. import bot
 
 
 def define(word: str):
