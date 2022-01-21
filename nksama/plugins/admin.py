@@ -4,6 +4,8 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from pyrogram.types.messages_and_media import message
 from nksama import bot
 from nksama.plugins.helpers import call_back_in_filter
+from pyrogram import filters
+from pyrogram.types import Message
 
 from pyrogram import filters
 from nksama import help_message
@@ -187,6 +189,23 @@ def bam(_, message):
     if admeme.status == "creator" or "administrator" and user.sender_chat:
         bot.unban_chat_member(message.chat.id, user.sender_chat.id)
         message.reply_text("UNBanned {}".format(user.sender_chat.id))
+
+@bot.on_message(filters.command("purge"))
+def purge(_ , m : Message):
+    if is_admin(m.chat.id, m.from_user.id) and m.reply_to_message:
+        msgs = []
+        
+        for x in range(m.reply_to_message.message_id , m.message_id):
+            msgs.append(x)
+
+        bot.delete_messages(m.chat.id, msgs)
+        m.reply("Purge Complete")
+
+    elif not m.reply_to_message and is_admin(m.chat.id , m.from_user.id):
+        m.reply("Reply to a Message!")
+
+    else:
+        m.reply("reply to a message")
 
 
 help_message.append({'Module_Name': 'admin'})
