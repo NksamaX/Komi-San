@@ -13,6 +13,7 @@ class Help_Text:
 • /pin - __reply to a message__
 • /unpin - __reply to a message__
 • /id - __to get the user id__
+• /purge - __purge the messages__
 
 """,
         "meme_help": """
