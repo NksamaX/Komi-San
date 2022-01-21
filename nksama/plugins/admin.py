@@ -190,18 +190,19 @@ def bam(_, message):
         bot.unban_chat_member(message.chat.id, user.sender_chat.id)
         message.reply_text("UNBanned {}".format(user.sender_chat.id))
 
+
 @bot.on_message(filters.command("purge"))
-def purge(_ , m : Message):
+def purge(_, m: Message):
     if is_admin(m.chat.id, m.from_user.id) and m.reply_to_message:
         msgs = []
-        
-        for x in range(m.reply_to_message.message_id , m.message_id):
+
+        for x in range(m.reply_to_message.message_id, m.message_id):
             msgs.append(x)
 
         bot.delete_messages(m.chat.id, msgs)
         m.reply("Purge Complete")
 
-    elif not m.reply_to_message and is_admin(m.chat.id , m.from_user.id):
+    elif not m.reply_to_message and is_admin(m.chat.id, m.from_user.id):
         m.reply("Reply to a Message!")
 
     else:
