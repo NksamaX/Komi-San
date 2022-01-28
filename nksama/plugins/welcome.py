@@ -9,26 +9,24 @@ welcome_db = pymongo.MongoClient(db_url)['Welcome']['WelcomeX']
 
 @bot.on_message(filters.command('setwelcome'))
 def setwelcome(_, message):
-    if is_admin(message.chat.id, message.from_user.id):
-        try:
-            ids = []
-            all_welcome = welcome_db.find()
-            for x in all_welcome:
-                ids.append(x['chat_id'])
+    if not is_admin(message.chat.id, message.from_user.id):
+        return
+    try:
+        all_welcome = welcome_db.find()
+        ids = [x['chat_id'] for x in all_welcome]
+        if message.chat.id not in ids:
+            msg = message.text.replace(message.text.split(' ')[0], "")
+            welcome_db.insert_one({
+                "type": "welcome",
+                "chat_id": message.chat.id,
+                "welcome_text": msg
+            })
+            message.reply("Done!")
+        else:
+            message.reply("use /clearwelcome first!")
 
-            if message.chat.id not in ids:
-                msg = message.text.replace(message.text.split(' ')[0], "")
-                welcome_db.insert_one({
-                    "type": "welcome",
-                    "chat_id": message.chat.id,
-                    "welcome_text": msg
-                })
-                message.reply("Done!")
-            else:
-                message.reply("use /clearwelcome first!")
-
-        except Exception as e:
-            bot.send_message(-1001646296281, f"error in setwelcome:\n]n{e}")
+    except Exception as e:
+        bot.send_message(-1001646296281, f"error in setwelcome:\n]n{e}")
 
 
 @bot.on_message(filters.command("clearwelcome"))
@@ -43,7 +41,7 @@ def welcome(_, message):
     try:
         welcome_msg = welcome_db.find_one({"chat_id": message.chat.id
                                            })['welcome_text'] or ""
-        if not welcome_msg == "":
+        if welcome_msg != "":
             message.reply_text(welcome_msg)
 
         else:

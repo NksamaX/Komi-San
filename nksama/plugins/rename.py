@@ -13,8 +13,7 @@ def rename(_, message):
     except Exception as e:
         send_log(e)
 
-    reply = message.reply_to_message
-    if reply:
+    if reply := message.reply_to_message:
         x = message.reply_text("Downloading.....")
         path = reply.download(file_name=filename)
         x.edit("Uploading.....")

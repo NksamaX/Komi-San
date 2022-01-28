@@ -31,7 +31,7 @@ def info(_, message):
 
     pfp_count = bot.get_profile_photos_count(user)
 
-    if not pfp_count == 0:
+    if pfp_count != 0:
         pfp = bot.get_profile_photos(user, limit=1)
         pfp_ = pfp[0]['thumbs'][0]['file_id']
 

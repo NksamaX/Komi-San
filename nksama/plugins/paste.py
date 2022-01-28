@@ -12,8 +12,7 @@ def paste(text):
 
 @bot.on_message(filters.command('paste'))
 def pastex(_, message):
-    text = message.reply_to_message
-    if text:
+    if text := message.reply_to_message:
         x = paste(text.text)
         message.reply(x,
                       reply_markup=InlineKeyboardMarkup(

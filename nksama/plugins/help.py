@@ -15,13 +15,10 @@ Report bugs at - @komisan_support"""
 @bot.on_message(filters.command('help') | filters.command('help@KomiSanRobot'))
 def bothelp(_, message):
     if message.chat.type == "private":
-        keyboard = []
-        for x in help_message:
-            keyboard.append([
+        keyboard = [[
                 InlineKeyboardButton(f"{x['Module_Name']}",
                                      callback_data=f"help:{x['Module_Name']}")
-            ])
-
+            ] for x in help_message]
         bot.send_message(message.chat.id,
                          HELPP_TEXT,
                          reply_markup=InlineKeyboardMarkup(keyboard))

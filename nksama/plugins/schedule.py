@@ -44,12 +44,7 @@ def latest():
             title = f"**[{title}](https://subsplease.org/shows/{x['page']})**"
         data = f"{title} - {time}"
 
-        if k:
-            k = f"{k}\n{data}"
-
-        else:
-            k = data
-
+        k = f"{k}\n{data}" if k else data
     return k
 
 

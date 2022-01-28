@@ -13,18 +13,14 @@ def start(_, message):
     try:
         if message.chat.type == "private":
             users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
+            mfs = [x['user_id'] for x in users]
             if message.from_user.id not in mfs:
                 user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
 
         else:
             users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
+            mfs = [x['chat_id'] for x in users]
             if message.chat.id not in mfs:
                 grp = {"type": "group", "chat_id": message.chat.id}
                 grps.insert_one(grp)
@@ -32,7 +28,7 @@ def start(_, message):
     except Exception as e:
         bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
 
-    if message.chat.type == "private" and not "help" in message.text:
+    if message.chat.type == "private" and "help" not in message.text:
 
         bot.send_message(
             message.chat.id,
@@ -45,5 +41,5 @@ def start(_, message):
                          reply_markup=InlineKeyboardMarkup([[
                              InlineKeyboardButton('help', callback_data="help")
                          ]]))
-    if not message.chat.type == "private":
+    if message.chat.type != "private":
         message.reply("Hello there i'm komi-san")
