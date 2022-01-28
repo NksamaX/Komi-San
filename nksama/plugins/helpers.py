@@ -47,17 +47,17 @@ def callback_help(_, query):
 
     if query.data == "help":
         keyboard = [[
-                InlineKeyboardButton(x['Module_Name'],
-                                     callback_data=f"help:{x['Module_Name']}")
-            ] for x in help_message]
+            InlineKeyboardButton(x['Module_Name'],
+                                 callback_data=f"help:{x['Module_Name']}")
+        ] for x in help_message]
         query.message.edit(HELPP_TEXT,
                            reply_markup=InlineKeyboardMarkup(keyboard))
 
     if query.data.split(":")[1] == "back":
         keyboard = [[
-                InlineKeyboardButton(x['Module_Name'],
-                                     callback_data=f"help:{x['Module_Name']}")
-            ] for x in help_message]
+            InlineKeyboardButton(x['Module_Name'],
+                                 callback_data=f"help:{x['Module_Name']}")
+        ] for x in help_message]
         try:
             query.message.edit(HELPP_TEXT,
                                reply_markup=InlineKeyboardMarkup(keyboard))

@@ -16,9 +16,9 @@ Report bugs at - @komisan_support"""
 def bothelp(_, message):
     if message.chat.type == "private":
         keyboard = [[
-                InlineKeyboardButton(f"{x['Module_Name']}",
-                                     callback_data=f"help:{x['Module_Name']}")
-            ] for x in help_message]
+            InlineKeyboardButton(f"{x['Module_Name']}",
+                                 callback_data=f"help:{x['Module_Name']}")
+        ] for x in help_message]
         bot.send_message(message.chat.id,
                          HELPP_TEXT,
                          reply_markup=InlineKeyboardMarkup(keyboard))

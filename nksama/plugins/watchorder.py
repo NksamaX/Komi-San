@@ -33,9 +33,8 @@ def watchorder(_, message):
     res = get(f'https://chiaki.site/?/tools/autocomplete_series&term={anime_}'
               ).json()
     keyboard = [[
-            InlineKeyboardButton(x['value'],
-                                 callback_data="fk:{}".format(x['id']))
-        ] for x in res]
+        InlineKeyboardButton(x['value'], callback_data="fk:{}".format(x['id']))
+    ] for x in res]
     bot.send_message(message.chat.id,
                      "results for {}".format(anime_),
                      reply_markup=InlineKeyboardMarkup(keyboard))
